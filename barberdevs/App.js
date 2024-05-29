@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
 // NAVEGAÇÃO 
@@ -14,6 +13,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+
         {/* TELA DE INICIO */}
         <Stack.Screen
           name="TelaEntrada"
