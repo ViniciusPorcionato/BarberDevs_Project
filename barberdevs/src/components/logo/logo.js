@@ -8,4 +8,11 @@ right: 26%;
 top: 10%;
 `
 
+export const ImageBackground = styled.Image`
+flex: 1;
+position: absolute;
+width: 100px;
+height: 100px;
+`
+
 export default Logo;

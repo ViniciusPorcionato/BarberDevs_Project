@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato';
+import {Poppins_400Regular, Poppins_600SemiBold} from "@expo-google-fonts/poppins";
 
 // NAVEGAÇÃO 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -10,6 +11,17 @@ import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  let [fontsLoaded, fontError] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
+    Poppins_400Regular,
+    Poppins_600SemiBold,
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -24,12 +36,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
