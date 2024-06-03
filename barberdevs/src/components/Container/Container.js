@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.SafeAreaView`
     flex: 1;
-    align-items: center;
     background-color: #181818;
     padding: 20px;
+    align-items: center;
 `
 
 export const BoxInput = styled.View`

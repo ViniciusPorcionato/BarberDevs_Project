@@ -7,3 +7,7 @@ export const Input = styled.TextInput`
     padding-left: 17px;
     text-decoration: none;
 `
+
+export const InputLong = styled(Input)`
+    width: 100%;
+`

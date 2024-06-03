@@ -9,6 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 import { Login } from './src/screens/TelaLogin/TelaDeLogin';
 import { StatusBar } from 'react-native';
+import { RecuperaçãoSenha } from './src/screens/TelaRecSenha/TelaRecSenha';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen
+            name="TelaRecSenha"
+            component={RecuperaçãoSenha}
+            options={{ title: "TelaRecSenha" }}
+          />
+
+          <Stack.Screen
             name="TelaLogin"
             component={Login}
             options={{ title: "Tela de Login" }}
@@ -43,6 +50,8 @@ export default function App() {
             component={TelaEntrada}
             options={{ title: "TelaEntrada" }}
           />
+
+
         </Stack.Navigator>
       </NavigationContainer>
     </>

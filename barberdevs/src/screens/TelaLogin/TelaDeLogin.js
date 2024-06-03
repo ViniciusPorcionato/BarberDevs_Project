@@ -1,9 +1,12 @@
 import { BoxInput, Container } from "../../components/Container/Container"
-import { ButtonBack } from "../../components/button/button"
+import { ButtonBack, ButtonLogin } from "../../components/button/button"
 import { Input } from "../../components/input/Input";
 import { Logo } from "../../components/logo/logo";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { TextButton } from "../../components/text/text";
+import { TextLinkStyled } from "../../components/link/link";
 
 export const Login = ({ navigation }) => {
     return (
@@ -23,12 +26,18 @@ export const Login = ({ navigation }) => {
             </BoxInput>
 
             <BoxInput>
-                <Ionicons name="person" size={24} color="white" />
+                <FontAwesome5 name="lock" size={24} color="white" />
                 <Input
                     placeholder={"Senha"}
                     placeholderTextColor={"white"}
                 />
             </BoxInput>
+
+            <ButtonLogin>
+                <TextButton>Login</TextButton>
+            </ButtonLogin>
+
+            <TextLinkStyled>Esqueceu sua senha?</TextLinkStyled>
 
         </Container>
     )

@@ -1,11 +1,12 @@
 import { BoxInput, Container } from "../../components/Container/Container"
-import { ButtonBack } from "../../components/button/button"
-import { Input } from "../../components/input/Input";
+import { ButtonBack, ButtonLogin } from "../../components/button/button"
+import { InputLong } from "../../components/input/Input";
 import { Logo } from "../../components/logo/logo";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { TextButton } from "../../components/text/text";
 
-export const Login = ({ navigation }) => {
+export const RecuperaçãoSenha = ({ navigation }) => {
     return (
         <Container>
             <ButtonBack onPress={() => alert("voltando")}>
@@ -15,14 +16,15 @@ export const Login = ({ navigation }) => {
             <Logo source={require("./../../assets/img/Logo.png")} />
 
             <BoxInput>
-                <Ionicons name="person" size={24} color="white" />
-                <Input
+                <InputLong
                     placeholder={"Email"}
                     placeholderTextColor={"white"}
                 />
             </BoxInput>
 
-            
+            <ButtonLogin>
+                <TextButton>Login</TextButton>
+            </ButtonLogin>
 
         </Container>
     )
