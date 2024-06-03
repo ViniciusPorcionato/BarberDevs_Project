@@ -1,10 +1,8 @@
 import { ImageBackground, StyleSheet } from "react-native";
-import { Container, ContainerTelaEntrada } from "../../components/Container/Container";
-
 import Title from "../../components/tittle/tittle";
 import { ButtonStyled } from "../../components/button/button";
 import Text, { TextCop } from "../../components/text/text";
-import { Link } from "../../components/Link/link";
+import TextLink from "../../components/link/link";
 
 export const TelaEntrada = () => {
   return (
@@ -21,7 +19,7 @@ export const TelaEntrada = () => {
         <Text>Cadastre-se</Text>
       </ButtonStyled>
 
-      <Link>Continuar sem conta</Link>
+      <TextLink  onPress={() => {}}>Continuar sem conta</TextLink>
       <TextCop>© 2024 BarberDevs. Todos os direitos reservados. TM BarberDevs.</TextCop>
     </ImageBackground>
   );

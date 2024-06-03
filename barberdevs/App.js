@@ -1,5 +1,8 @@
+import { StatusBar } from 'react-native';
+
+// FONTS
 import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato';
-import {Poppins_400Regular, Poppins_600SemiBold} from "@expo-google-fonts/poppins";
+import { Poppins_400Regular, Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 
 // NAVEGAÇÃO 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -7,6 +10,8 @@ import { NavigationContainer } from "@react-navigation/native";
 
 // TELAS
 import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
+import { Login } from './src/screens/TelaLogin/TelaDeLogin';
+import TelaListagemAgendamento from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,16 +28,31 @@ export default function App() {
     return null;
   }
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <>
+      <StatusBar
+        barStyle={"light-content"}
+      />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-        {/* TELA DE INICIO */}
-        <Stack.Screen
-          name="TelaEntrada"
-          component={TelaEntrada}
-          options={{ title: "TelaEntrada" }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+          {/* TELA DE INICIO */}
+          <Stack.Screen
+            name="TelaListagemAgendamento"
+            component={TelaListagemAgendamento}
+            options={{ title: "Tela de Listagem de Agendamento" }}
+          />
+          <Stack.Screen
+            name="TelaEntrada"
+            component={TelaEntrada}
+            options={{ title: "TelaEntrada" }}
+          />
+          <Stack.Screen
+            name="TelaLogin"
+            component={Login}
+            options={{ title: "Tela de Login" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
