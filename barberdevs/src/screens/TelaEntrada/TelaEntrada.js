@@ -1,32 +1,40 @@
-import { ImageBackground, Text, StyleSheet } from "react-native";
-import { Container } from "../../components/Container/Container";
+import { ImageBackground, StyleSheet } from "react-native";
+import { Container, ContainerTelaEntrada } from "../../components/Container/Container";
+
+import Title from "../../components/tittle/tittle";
+import { ButtonStyled } from "../../components/button/button";
+import Text, { TextCop } from "../../components/text/text";
+import { Link } from "../../components/Link/link";
 
 export const TelaEntrada = () => {
   return (
-    <Container>
-      <ImageBackground
-        source={require("../../assets/img/BackGround.png")}
-        style={styles.image}
-      >
-        <Text style={styles.text}>Texto sobre a imagem de fundo</Text>
-      </ImageBackground>
-    </Container>
+    <ImageBackground
+      source={require("../../assets/img/BackGround.png")}
+      style={styles.image}
+    >
+        <Title>Já tem uma Conta?</Title>
+        <ButtonStyled>
+          <Text>Login</Text>
+        </ButtonStyled>
+      <Title>Não tem Conta?</Title>
+      <ButtonStyled>
+        <Text>Cadastre-se</Text>
+      </ButtonStyled>
+
+      <Link>Continuar sem conta</Link>
+      <TextCop>© 2024 BarberDevs. Todos os direitos reservados. TM BarberDevs.</TextCop>
+    </ImageBackground>
   );
 };
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   image: {
-    flex: 1,
-    resizeMode: "cover", // Modo de redimensionamento da imagem
-    justifyContent: "center", // Centraliza o conteúdo verticalmente
-    alignItems: "center", // Centraliza o conteúdo horizontalmente
-  },
-  text: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold",
+    // flex: 1,
+    width: "100%",
+    height: "100%",
+    // resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
