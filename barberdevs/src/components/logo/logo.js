@@ -15,4 +15,13 @@ width: 100px;
 height: 100px;
 `
 
+export const PerfilCliente = styled.Image`
+width: 50px;
+height: 50px;
+`
+
+export const PerfilBarbeiro = styled(PerfilCliente)`
+
+`
+
 export default Logo;

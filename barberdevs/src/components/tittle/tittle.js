@@ -13,8 +13,7 @@ font-size: 20px;
 color: #FFB600;
 font-family: 'Poppins_400Regular';
 left: 8%;
-align-self: flex-start;
-top: 17%;
+margin-bottom: 10px;
 `
 
 export default TitleAgendamento;
