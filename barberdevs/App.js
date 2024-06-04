@@ -9,7 +9,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 import { Login } from './src/screens/TelaLogin/TelaDeLogin';
 import { StatusBar } from 'react-native';
-import { RecuperaçãoSenha } from './src/screens/TelaRecSenha/TelaRecSenha';
+import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
+import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
+import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
+import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,10 +35,17 @@ export default function App() {
       />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* TELA DE INICIO */}
           <Stack.Screen
-            name="TelaRecSenha"
-            component={RecuperaçãoSenha}
-            options={{ title: "TelaRecSenha" }}
+            name="TelaEntrada"
+            component={TelaEntrada}
+            options={{ title: "TelaEntrada" }}
+          />
+
+          <Stack.Screen
+            name="TelaCriarConta"
+            component={CriarConta}
+            options={{ title: "Tela de Criar Conta" }}
           />
 
           <Stack.Screen
@@ -44,14 +54,23 @@ export default function App() {
             options={{ title: "Tela de Login" }}
           />
 
-          {/* TELA DE INICIO */}
           <Stack.Screen
-            name="TelaEntrada"
-            component={TelaEntrada}
-            options={{ title: "TelaEntrada" }}
+            name="TelaVerificaçãoEmail"
+            component={VerificacaoEmail}
+            options={{ title: "TelaVerEmail" }}
+          />
+          
+          <Stack.Screen
+            name="TelaCodigo"
+            component={EnvioDeCodigo}
+            options={{ title: "Tela de envio de código" }}
           />
 
-
+          <Stack.Screen
+            name="TelaRecSenha"
+            component={RecuperarSenha}
+            options={{ title: "TelaRecSenha" }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

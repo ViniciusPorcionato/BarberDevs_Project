@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const ButtonStyled = styled.TouchableOpacity`
     border: 1px;
     border-width: 1px;
-    padding: 10px;
     width: 90%;
+    height: 45px;
     justify-content: center;
     align-items: center;
     border-color: #FFB600;
@@ -13,7 +13,7 @@ export const ButtonStyled = styled.TouchableOpacity`
     margin-bottom: 42px;
 `
 
-export const ButtonBack = styled.Pressable`
+export const ButtonBack = styled.TouchableOpacity`
     width: 40px;
     height: 40px;
     align-items: center;

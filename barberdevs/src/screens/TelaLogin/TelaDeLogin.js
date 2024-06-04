@@ -5,13 +5,13 @@ import { Logo } from "../../components/logo/logo";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { TextButton } from "../../components/text/text";
+import { TextButton, TextCop_Styled_Login } from "../../components/text/text";
 import { TextLinkStyled } from "../../components/link/link";
 
 export const Login = ({ navigation }) => {
     return (
         <Container>
-            <ButtonBack onPress={() => alert("voltando")}>
+            <ButtonBack onPress={() => navigation.replace("TelaEntrada")}>
                 <AntDesign name="arrowleft" size={24} color="black" />
             </ButtonBack>
 
@@ -37,7 +37,9 @@ export const Login = ({ navigation }) => {
                 <TextButton>Login</TextButton>
             </ButtonLogin>
 
-            <TextLinkStyled>Esqueceu sua senha?</TextLinkStyled>
+            <TextLinkStyled onPress={() => navigation.replace("TelaVerificaçãoEmail")} >Esqueceu sua senha?</TextLinkStyled>
+
+            <TextCop_Styled_Login>© 2024 BarberDevs. Todos os direitos reservados. TM BarberDevs.</TextCop_Styled_Login>
 
         </Container>
     )

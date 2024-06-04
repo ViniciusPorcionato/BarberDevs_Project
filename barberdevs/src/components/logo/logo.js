@@ -11,3 +11,7 @@ export const ImageBackground = styled.Image`
     width: 100px;
     height: 100px;
 `
+
+export const Logo_2 = styled(Logo)`
+    width: 300px;
+`

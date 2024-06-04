@@ -10,4 +10,5 @@ export const Input = styled.TextInput`
 
 export const InputLong = styled(Input)`
     width: 100%;
+    padding: 0;
 `
