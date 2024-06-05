@@ -15,6 +15,11 @@ margin-bottom: 42px;
 
 `
 
+export const CloseButton = styled.TouchableOpacity`
+left: 87%;
+bottom: 115%;
+`
+
 
 // =======
 // export const ButtonStyled = styled.Pressable`

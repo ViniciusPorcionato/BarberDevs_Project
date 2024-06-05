@@ -1,6 +1,8 @@
 import { ContainerCinza } from '../Container/Container';
 import { PerfilCliente } from '../logo/logo';
-import { TextAgendamento } from '../Text/Text';
+import { TextAgendamento } from '../text/text';
+// import { TextAgendamento } from '../Text/Text';
+// import TextAgendamento from '../../components/text/text'
 
 
 export const HeaderPerfil = () => {

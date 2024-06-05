@@ -9,7 +9,7 @@ font-family: 'Poppins_400Regular';
 export const TextAgendamento = styled(Text)`
 color: #fff;
 left: 45%;
-bottom: 39%;
+bottom: 35%;
 font-size: 15px;
 `
 
@@ -31,6 +31,8 @@ bottom: 45%;
 export const Nome = styled.Text`
 font-size: 12px;
 color: #fff;
+left: 25%;
+bottom: 45%;
 `
 
 export const DataNascimento = styled(Nome)`

@@ -29,7 +29,18 @@ export const CardAgendamento = styled.View`
   background-color: #52525A;
   left: 8%;
   border-radius: 10px;
+  margin-bottom: 25px;
 `;
+
+export const ContainerFooter = styled.View`
+width: 100%;
+height: 10%;
+`
+
+export const IconContainer = styled.View`
+width: 10%;
+height: 10%;
+`
 
 export const BoxInput = styled.View`
   width: 90%;

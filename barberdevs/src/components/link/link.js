@@ -4,7 +4,7 @@ export const TextLink = styled.Text`
 color: #fff;
 text-decoration: underline;
 font-size: 13px;
-font-family: Poppins_400Regular;
+font-family: 'Poppins_400Regular';
 top: 147px;
 `
 
