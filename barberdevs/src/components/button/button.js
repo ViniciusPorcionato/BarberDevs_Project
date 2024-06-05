@@ -1,41 +1,34 @@
 import styled from "styled-components";
 
 export const ButtonStyled = styled.TouchableOpacity`
-
-border: 1px;
-border-width: 1px;
-padding: 10px;
-width: 90%;
-justify-content: center;
-align-items: center;
-border-color: #FFB600;
-border-radius: 10px;
-background-color: #FFB600;
-margin-bottom: 42px;
-
+    border: 1px;
+    border-width: 1px;
+    width: 90%;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-color: #FFB600;
+    border-radius: 10px;
+    background-color: #FFB600;
+    margin-bottom: 42px;
 `
 
 export const CloseButton = styled.TouchableOpacity`
 left: 87%;
-bottom: 115%;
+bottom: 205%;
 `
 
+export const ButtonBack = styled.TouchableOpacity`
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFB600; 
+    border-radius: 20px;
+    align-self: flex-start;
+`
 
-// =======
-// export const ButtonStyled = styled.Pressable`
-//     width: 80%;
-//     height: 30%;
-//     border-radius: 5px;
-//     border: 2px solid #FFB600;
-// `
-
-// export const ButtonBack = styled.Pressable`
-//     width: 40px;
-//     height: 40px;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: #FFB600; 
-//     border-radius: 15px;
-//     align-self: flex-start;
-// `
-// >>>>>>> 90b24ffcc9c9828b990cb0ba9592bcdd82e72415
+export const ButtonLogin = styled(ButtonStyled)`
+    margin-top: 42px;
+    margin-bottom: 10px;
+`

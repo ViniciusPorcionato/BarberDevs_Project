@@ -13,6 +13,11 @@ import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 import { Login } from './src/screens/TelaLogin/TelaDeLogin';
 import TelaListagemAgendamento from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
 
+import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
+import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
+import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
+import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -46,10 +51,35 @@ export default function App() {
             component={TelaEntrada}
             options={{ title: "TelaEntrada" }}
           />
+
+          <Stack.Screen
+            name="TelaCriarConta"
+            component={CriarConta}
+            options={{ title: "Tela de Criar Conta" }}
+          />
+
           <Stack.Screen
             name="TelaLogin"
             component={Login}
             options={{ title: "Tela de Login" }}
+          />
+
+          <Stack.Screen
+            name="TelaVerificaçãoEmail"
+            component={VerificacaoEmail}
+            options={{ title: "TelaVerEmail" }}
+          />
+          
+          <Stack.Screen
+            name="TelaCodigo"
+            component={EnvioDeCodigo}
+            options={{ title: "Tela de envio de código" }}
+          />
+
+          <Stack.Screen
+            name="TelaRecSenha"
+            component={RecuperarSenha}
+            options={{ title: "TelaRecSenha" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
