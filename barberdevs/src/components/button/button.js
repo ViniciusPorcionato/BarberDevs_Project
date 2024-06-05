@@ -16,6 +16,7 @@ export const ButtonStyled = styled.TouchableOpacity`
 export const CloseButton = styled.TouchableOpacity`
 left: 87%;
 bottom: 205%;
+
 `
 
 export const ButtonBack = styled.TouchableOpacity`

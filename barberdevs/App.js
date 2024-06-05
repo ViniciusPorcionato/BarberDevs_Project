@@ -11,7 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 // TELAS
 import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 import { Login } from './src/screens/TelaLogin/TelaDeLogin';
-import TelaListagemAgendamento from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
+import { TelaListagemAgendamento } from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
 
 import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
 import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';

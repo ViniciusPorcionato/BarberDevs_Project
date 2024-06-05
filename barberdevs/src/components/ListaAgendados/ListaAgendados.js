@@ -3,22 +3,31 @@ import { PerfilBarbeiro } from "../logo/logo";
 import { Nome, DataNascimento, HoraMarcada } from "../../components/text/text";
 import { EvilIcons } from "@expo/vector-icons";
 import { CloseButton } from "../button/button";
+import { FlatList, View } from "react-native";
 
-// Ajuste aqui: Remova a desestruturação desnecessária e passe os props diretamente
-export const ListaAgendados = () => {
+export const ListaAgendados = ({data, renderItem, keyExtractor}) => {
+  const renderItem = ({ item }) => (
+    <View>
+      <Nome>{item.nome}</Nome>
+      <DataNascimento>{item.dataNascimento}</DataNascimento>
+      <HoraMarcada>{item.horaMarcada}</HoraMarcada>
+      <CloseButton>
+        <EvilIcons name="close" size={30} color="#FFB600" />
+      </CloseButton>
+    </View>
+  );
+
   return (
     <CardAgendamento>
       <PerfilBarbeiro
         source={require("../../assets/img/FotoPerfilBarbeiro.png")}
         style={{ width: 50, height: 50, left: "5%", top: "20%" }}
       />
-      {/* Correção: Use as props passadas para o componente */}
-      <Nome>Vinicius</Nome>
-      <DataNascimento>10/10/2005</DataNascimento>
-      <HoraMarcada>17:30</HoraMarcada>
-      <CloseButton>
-        <EvilIcons name="close" size={30} color="#FFB600" />
-      </CloseButton>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+      />
     </CardAgendamento>
   );
 };

@@ -1,29 +1,58 @@
-import { ContainerAgendamento, ContainerFooter, IconContainer } from "../../components/Container/Container";
+import {
+  ContainerAgendamento,
+  ContainerFooter,
+  IconContainer,
+  ContentIcon,
+} from "../../components/Container/Container";
 import { HeaderPerfil } from "../../components/HeaderPerfil/HeaderPerfil";
 import { ListaAgendados } from "../../components/ListaAgendados/ListaAgendados";
 import TitleAgendamento from "../../components/tittle/tittle";
-import { FontAwesome6 } from '@expo/vector-icons';
+import { FontAwesome6 } from "@expo/vector-icons";
+import { FlatList, View } from "react-native";
 
-export const TelaListagemAgendamento = ({
-  nome,
-  DataNascimento,
-  HoraMarcada,
-}) => {
+export const TelaListagemAgendamento = ({ data, index, item }) => {
+
+  const agendamentos = [
+    {
+      id: 1,
+      nome: "Vinicius",
+      dataNascimento: "10/10/2005",
+      horaMarcada: "17:30",
+      fotoPerfil: require("../../assets/img/FotoPerfilBarbeiro.png"),
+    },
+    {
+      id: 2,
+      nome: "miguel",
+      dataNascimento: "10/10/2004",
+      horaMarcada: "14:30",
+      fotoPerfil: require("../../assets/img/FotoPerfilBarbeiro.png"),
+    },
+    // Adicione mais agendamentos conforme necessário
+  ];
+
   return (
     <ContainerAgendamento>
       <HeaderPerfil />
       <TitleAgendamento>Seus agendamentos:</TitleAgendamento>
 
-      <ListaAgendados/>
-      <ListaAgendados/>
-      <ListaAgendados/>
-      <ListaAgendados/>
+      <FlatList
+        data={agendamentos}
+        renderItem={({ item }) => (
+          <ListaAgendados
+            nome={item.nome}
+            dataNascimento={item.dataNascimento}
+            horaMarcada={item.horaMarcada}
+            fotoPerfil={item.fotoPerfil}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
 
-      <ContainerFooter>
+      {/* <ContainerFooter>
         <IconContainer>
-        <FontAwesome6 name="scissors" size={24} color="black" />
+          <FontAwesome6 name="scissors" size={24} color="black" />
         </IconContainer>
-      </ContainerFooter>
+      </ContainerFooter> */}
     </ContainerAgendamento>
   );
 };
