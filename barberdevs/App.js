@@ -1,3 +1,6 @@
+import { StatusBar } from 'react-native';
+
+// FONTS
 import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato';
 import { Poppins_400Regular, Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 
@@ -13,6 +16,7 @@ import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
 import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
 import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
 import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
+import TelaListagemAgendamento from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +41,11 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {/* TELA DE INICIO */}
           <Stack.Screen
+            name="TelaListagemAgendamento"
+            component={TelaListagemAgendamento}
+            options={{ title: "Tela de Listagem de Agendamento" }}
+          />
+          <Stack.Screen
             name="TelaEntrada"
             component={TelaEntrada}
             options={{ title: "TelaEntrada" }}
@@ -47,7 +56,6 @@ export default function App() {
             component={CriarConta}
             options={{ title: "Tela de Criar Conta" }}
           />
-
           <Stack.Screen
             name="TelaLogin"
             component={Login}

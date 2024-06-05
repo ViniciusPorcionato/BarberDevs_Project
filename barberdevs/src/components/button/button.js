@@ -27,3 +27,8 @@ export const ButtonLogin = styled(ButtonStyled)`
     margin-top: 42px;
     margin-bottom: 10px;
 `
+
+export const CloseButton = styled.TouchableOpacity`
+left: 87%;
+bottom: 115%;
+`
