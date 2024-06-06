@@ -2,41 +2,48 @@ import styled from "styled-components/native";
 import { ImageBackground } from "../logo/logo";
 
 export const ContainerCinza = styled.View`
-  background-color: #181818;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  margin-top: 7%;
+  padding-right: 5%;
 `;
 
 export const ContainerAgendamento = styled.View`
   flex: 1;
-  background-color: #181818;
+  background-color: #272727;
 `;
 
 export const CardAgendamento = styled.View`
   width: 80%;
-  height: 40%;
-  background-color: #52525a;
-  left: 8%;
+  height: 100px;
+  margin-bottom: 20px;
+  /* gap: 40px; */
+  margin-left: 8%;
   border-radius: 10px;
+  background-color: #52525A;
+
+  gap: 15px;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const ContainerFooter = styled.View`
-  width: 100%;
-  height: 10%;
+  height: 7%;
   justify-content: center;
   align-items: center;
   border-radius: 20px 20px 0px 0px;
-  background-color: #52525a;
-  top: 22%;
+  background-color: #52525A;
 `;
 
 export const IconContainer = styled.View`
-  width: 15%;
-  height: 70%;
+  /* width: 15%;
+  height: 100%;
   border-radius: 10px;
-  /* left: 47%; */
   top: -50%;
   justify-content: center;
   align-items: center;
-  background-color: #FFB600;
+  background-color: #FFB600; */
 `;
 
 export const Container = styled.View`
@@ -67,3 +74,26 @@ export const ContentIcon = styled.View`
   color: #fff;
   background-color: #52525a;
 `;
+
+export const ImageContainer = styled.View`
+align-items: center;
+flex-direction: row-reverse;
+
+
+`
+
+export const ContainerLocalizacao = styled.View`
+flex: 1;
+z-index: 1;
+position: absolute;
+top: 30%;
+background-color: white;
+
+`
+
+export const TextPosition = styled.View`
+flex-direction: row;
+gap: 30px;
+align-items: center;
+justify-content: center;
+`

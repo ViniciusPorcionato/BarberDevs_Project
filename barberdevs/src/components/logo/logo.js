@@ -11,12 +11,12 @@ top: 10%;
 export const PerfilCliente = styled.Image`
 width: 50px;
 height: 50px;
+justify-content: flex-end;
 `
 
 export const PerfilBarbeiro = styled(PerfilCliente)`
-width: 221px;
-height: 226px;
-margin-bottom: 76px;
+margin-left: 5%;
+
 `
 export const ImageBackground = styled.Image`
 flex: 1;

@@ -12,7 +12,8 @@ export const TitleAgendamento = styled.Text`
 font-size: 20px;
 color: #FFB600;
 font-family: 'Poppins_400Regular';
-left: 8%;
+margin-left: 8.2%;
+margin-top: 10px;
 margin-bottom: 10px;
 `
 
