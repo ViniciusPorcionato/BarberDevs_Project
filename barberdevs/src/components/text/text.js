@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Text = styled.Text`
     font-size: 16px;
@@ -69,3 +69,25 @@ export const HoraMarcada = styled(Nome)`
 
 `
 
+export const NomeBarbeiro = styled.Text`
+    font-size: 14px;
+    font-family: "";
+    color: #FFFFFF;
+`
+
+export const TextoHora = styled(Text)`
+    font-size: 10px;
+    font-family: "Poppins_400Regular";
+
+    ${props => props.clickButton ? 
+    css`
+      color: black; 
+    `
+    : css`
+      color: white;
+    `}
+`
+
+export const TextCop_Styled_Agendar = styled(TextCop)`
+    top: 10%;
+`

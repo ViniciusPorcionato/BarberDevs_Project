@@ -11,12 +11,12 @@ import { NavigationContainer } from "@react-navigation/native";
 // TELAS
 import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 import { Login } from './src/screens/TelaLogin/TelaDeLogin';
-import { StatusBar } from 'react-native';
 import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
 import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
 import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
 import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
 import TelaListagemAgendamento from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
+import { TelaAgendamento } from './src/screens/TelaAgendamento/TelaAgendamento.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +39,12 @@ export default function App() {
       />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="TelaAgendamento"
+            component={TelaAgendamento}
+            options={{ title: "Tela de Agendamento" }}
+          />
+
           {/* TELA DE INICIO */}
           <Stack.Screen
             name="TelaListagemAgendamento"
@@ -67,7 +73,7 @@ export default function App() {
             component={VerificacaoEmail}
             options={{ title: "TelaVerEmail" }}
           />
-          
+
           <Stack.Screen
             name="TelaCodigo"
             component={EnvioDeCodigo}

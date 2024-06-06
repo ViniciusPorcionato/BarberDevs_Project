@@ -24,3 +24,9 @@ height: 50px;
 export const PerfilBarbeiro = styled(PerfilCliente)`
 
 `
+
+export const ImgBarbeiro = styled.Image`
+    width: 44px;
+    height: 42px;
+    border-radius: 20px;
+`
