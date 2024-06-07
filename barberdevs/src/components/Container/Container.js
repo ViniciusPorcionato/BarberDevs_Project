@@ -99,3 +99,17 @@ export const CardHorario = styled.TouchableOpacity`
 export const CardsConatiner = styled.View`
   width: 90%;
 `
+
+export const FormBox = styled.View`
+  margin-top: 45px;
+  width: 285px;
+  gap: 31px;
+`
+
+export const IconBox = styled.View`
+  width: 36px;
+  height: 36px;
+  position: relative;
+  top: -5%;
+  right: -28%;
+`

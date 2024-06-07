@@ -91,3 +91,7 @@ export const TextoHora = styled(Text)`
 export const TextCop_Styled_Agendar = styled(TextCop)`
     top: 10%;
 `
+
+export const TextCop_Styled_Perfil = styled(TextCop)`
+    top: 8%;
+`

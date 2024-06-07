@@ -30,3 +30,10 @@ export const ImgBarbeiro = styled.Image`
     height: 42px;
     border-radius: 20px;
 `
+
+export const ImgPerfil = styled.Image`
+    width: 211px;
+    height: 211px;
+    border-radius: 50px;
+    
+`

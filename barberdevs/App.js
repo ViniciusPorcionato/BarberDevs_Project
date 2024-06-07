@@ -17,6 +17,7 @@ import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenh
 import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
 import TelaListagemAgendamento from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
 import { TelaAgendamento } from './src/screens/TelaAgendamento/TelaAgendamento.js';
+import { TelaPerfil } from './src/screens/TelaPerfil/TelaPerfil.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +39,21 @@ export default function App() {
         barStyle={"light-content"}
       />
       <NavigationContainer>
+        
+        {/* <Drawer.Navigator initialRouteName="TelaPerfil">
+          <Drawer.Screen name="Home"  />
+          <Drawer.Screen name="Agendar" component={TelaListagemAgendamento} />
+          <Drawer.Screen name="Perfil" component={TelaPerfil} />
+          <Drawer.Screen name="Sobre Nós"  />
+        </Drawer.Navigator> */}
+
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="TelaPerfil"
+            component={TelaPerfil}
+            options={{ title: "Tela de Perfil" }}
+          />
+
           <Stack.Screen
             name="TelaAgendamento"
             component={TelaAgendamento}
