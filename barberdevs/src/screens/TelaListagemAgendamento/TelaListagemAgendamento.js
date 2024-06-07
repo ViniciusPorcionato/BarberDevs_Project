@@ -6,9 +6,11 @@ import {
 } from "../../components/Container/Container";
 import { HeaderPerfil } from "../../components/HeaderPerfil/HeaderPerfil";
 import { ListaAgendados } from "../../components/ListaAgendados/ListaAgendados";
-import TitleAgendamento from "../../components/tittle/tittle";
-import { FontAwesome6 } from "@expo/vector-icons";
-import { FlatList, View } from "react-native";
+import { MenuButton } from "../../components/button/button";
+import { FontAwesome6 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { TitleAgendamento } from "../../components/tittle/tittle";
+import { FlatList } from "react-native";
 import { AgendarButton } from "../../components/button/button";
 
 export const TelaListagemAgendamento = ({ data, index, item }) => {
@@ -72,12 +74,16 @@ export const TelaListagemAgendamento = ({ data, index, item }) => {
 
     // Adicione mais agendamentos conforme necessário
   ];
-
   return (
     <ContainerAgendamento>
-      <HeaderPerfil />
-      <TitleAgendamento>Seus agendamentos:</TitleAgendamento>
 
+      <MenuButton>
+        <Ionicons name="menu-sharp" size={30} color="white" />
+      </MenuButton>
+
+      <HeaderPerfil />
+
+      <TitleAgendamento>Seus agendamentos:</TitleAgendamento>
       <FlatList
         data={agendamentos}
         renderItem={({ item }) => (
@@ -92,14 +98,17 @@ export const TelaListagemAgendamento = ({ data, index, item }) => {
       />
 
       <ContainerFooter>
+
         <AgendarButton>
+
           <IconContainer>
             <FontAwesome6 name="scissors" size={24} color="black" />
           </IconContainer>
+          
         </AgendarButton>
+
       </ContainerFooter>
+
     </ContainerAgendamento>
   );
 };
-
-export default TelaListagemAgendamento;

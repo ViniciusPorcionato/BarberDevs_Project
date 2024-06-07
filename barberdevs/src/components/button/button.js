@@ -35,6 +35,13 @@ export const ButtonLogin = styled(ButtonStyled)`
     margin-bottom: 10px;
 `
 
+export const MenuButton = styled.TouchableOpacity`
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 98%;
+    left: 8%;
+`
 export const AgendarButton = styled.TouchableOpacity`
   width: 15%;
   height: 100%;
@@ -47,4 +54,3 @@ export const AgendarButton = styled.TouchableOpacity`
 
 
 `;
-

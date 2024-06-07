@@ -10,6 +10,4 @@ export const TextLink = styled.Text`
 
 export const TextLinkStyled = styled(TextLink)`
   top: 0px;
-`;
-
-export default TextLink;
+`

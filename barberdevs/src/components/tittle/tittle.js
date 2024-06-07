@@ -17,5 +17,10 @@ margin-top: 10px;
 margin-bottom: 10px;
 `
 
-export default TitleAgendamento;
-
+export const Title_Agendar= styled(Title)`
+    font-size: 12px;
+    font-family:"Poppins_600SemiBold";
+    left: 0;
+    margin-top: 6px;
+    margin-left: 16px;
+`

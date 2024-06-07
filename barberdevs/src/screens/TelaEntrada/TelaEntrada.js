@@ -1,9 +1,8 @@
 import { ImageBackground, StyleSheet } from "react-native";
-import Title from "../../components/tittle/tittle";
+import { Title } from "../../components/tittle/tittle"
 import { ButtonStyled } from "../../components/button/button";
-import Text from "../../components/text/text";
-import TextLink from "../../components/link/link";
-import { TextCop_Styled_Entrada } from "../../components/text/text";
+import { TextCop_Styled_Entrada, Text } from "../../components/text/text";
+import { TextLink } from "../../components/link/link";
 
 export const TelaEntrada = ({ navigation }) => {
   return (
