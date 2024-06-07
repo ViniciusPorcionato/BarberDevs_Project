@@ -39,7 +39,7 @@ export default function App() {
         barStyle={"light-content"}
       />
       <NavigationContainer>
-        
+
         {/* <Drawer.Navigator initialRouteName="TelaPerfil">
           <Drawer.Screen name="Home"  />
           <Drawer.Screen name="Agendar" component={TelaListagemAgendamento} />
@@ -49,23 +49,11 @@ export default function App() {
 
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen
-            name="TelaPerfil"
-            component={TelaPerfil}
-            options={{ title: "Tela de Perfil" }}
-          />
-
-          <Stack.Screen
-            name="TelaAgendamento"
-            component={TelaAgendamento}
-            options={{ title: "Tela de Agendamento" }}
-          />
-
-          {/* TELA DE INICIO */}
-          <Stack.Screen
             name="TelaListagemAgendamento"
             component={TelaListagemAgendamento}
             options={{ title: "Tela de Listagem de Agendamento" }}
           />
+          {/* TELA DE INICIO */}
           <Stack.Screen
             name="TelaEntrada"
             component={TelaEntrada}
@@ -99,6 +87,18 @@ export default function App() {
             name="TelaRecSenha"
             component={RecuperarSenha}
             options={{ title: "TelaRecSenha" }}
+          />
+
+          <Stack.Screen
+            name="TelaPerfil"
+            component={TelaPerfil}
+            options={{ title: "Tela de Perfil" }}
+          />
+
+          <Stack.Screen
+            name="TelaAgendamento"
+            component={TelaAgendamento}
+            options={{ title: "Tela de Agendamento" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

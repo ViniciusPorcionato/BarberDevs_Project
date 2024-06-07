@@ -32,3 +32,11 @@ export const CloseButton = styled.TouchableOpacity`
 left: 87%;
 bottom: 115%;
 `
+
+export const MenuButton = styled.TouchableOpacity`
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 98%;
+    left: 8%;
+`

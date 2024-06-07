@@ -1,15 +1,20 @@
 import { useState } from "react"
 import { Container, FormBox, IconBox } from "../../components/Container/Container"
-import { ButtonLogin } from "../../components/button/button"
+import { ButtonLogin, MenuButton } from "../../components/button/button"
 import { InputPerfil } from "../../components/input/Input"
 import { TextButton, TextCop_Styled_Perfil } from "../../components/text/text"
 import { ImgPerfil } from "../../components/logo/logo"
 import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 export const TelaPerfil = () => {
     const [editing, setEditing] = useState(false)
     return (
         <Container>
+            <MenuButton>
+                <Ionicons name="menu-sharp" size={30} color="white" />
+            </MenuButton>
+
             <ImgPerfil source={require("./../../assets/img/image8.png")} />
 
             <IconBox>
