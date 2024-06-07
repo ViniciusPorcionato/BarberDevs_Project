@@ -4,7 +4,6 @@ import { ButtonStyled } from "../../components/button/button";
 import { TextCop_Styled_Entrada, Text } from "../../components/text/text";
 import { TextLink } from "../../components/link/link";
 
-
 export const TelaEntrada = ({ navigation }) => {
   return (
     <ImageBackground

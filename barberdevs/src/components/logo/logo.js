@@ -19,9 +19,11 @@ export const Logo_2 = styled(Logo)`
 export const PerfilCliente = styled.Image`
 width: 50px;
 height: 50px;
+justify-content: flex-end;
 `
 
 export const PerfilBarbeiro = styled(PerfilCliente)`
+margin-left: 5%;
 
 `
 

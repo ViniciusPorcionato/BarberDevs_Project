@@ -11,13 +11,14 @@ import { NavigationContainer } from "@react-navigation/native";
 // TELAS
 import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 import { Login } from './src/screens/TelaLogin/TelaDeLogin';
+import { TelaListagemAgendamento } from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
 import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
 import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
 import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
 import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
-import TelaListagemAgendamento from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
 import { TelaAgendamento } from './src/screens/TelaAgendamento/TelaAgendamento.js';
 import { TelaPerfil } from './src/screens/TelaPerfil/TelaPerfil.js';
+import { TelaLocalizacao } from './src/screens/TelaLocalizacao/TelaLocalizacao.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,20 +40,19 @@ export default function App() {
         barStyle={"light-content"}
       />
       <NavigationContainer>
-
-        {/* <Drawer.Navigator initialRouteName="TelaPerfil">
-          <Drawer.Screen name="Home"  />
-          <Drawer.Screen name="Agendar" component={TelaListagemAgendamento} />
-          <Drawer.Screen name="Perfil" component={TelaPerfil} />
-          <Drawer.Screen name="Sobre Nós"  />
-        </Drawer.Navigator> */}
-
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen
             name="TelaListagemAgendamento"
             component={TelaListagemAgendamento}
             options={{ title: "Tela de Listagem de Agendamento" }}
           />
+
+          <Stack.Screen
+            name="TelaLocalizacao"
+            component={TelaLocalizacao}
+            options={{ title: "Tela de Localização" }}
+          />
+
           {/* TELA DE INICIO */}
           <Stack.Screen
             name="TelaEntrada"
@@ -65,6 +65,7 @@ export default function App() {
             component={CriarConta}
             options={{ title: "Tela de Criar Conta" }}
           />
+
           <Stack.Screen
             name="TelaLogin"
             component={Login}

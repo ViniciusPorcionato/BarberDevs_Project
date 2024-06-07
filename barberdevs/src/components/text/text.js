@@ -1,15 +1,15 @@
 import styled, { css } from "styled-components";
 
 export const Text = styled.Text`
-    font-size: 16px;
-    font-family: 'Poppins_400Regular';
+  font-size: 16px;
+  font-family: "Poppins_400Regular";
 `
 
 export const TextAgendamento = styled(Text)`
-color: #fff;
-left: 45%;
-bottom: 35%;
-font-size: 15px;
+  color: #fff;
+  /* left: 45%;
+  bottom: 35%; */
+  font-size: 15px;
 `
 
 export const TextCop = styled.Text`
@@ -47,27 +47,22 @@ export const TextCop_Styled_Login = styled(TextCop)`
 `
 
 export const InfoCard = styled(Text)`
-font-size: 12px;
-color: #fff;
-left: 25%;
-bottom: 45%;
-
-`
+  font-size: 12px;
+  color: #fff;
+  left: 25%;
+  /* bottom: 45%; */
+`;
 
 export const Nome = styled.Text`
-font-size: 12px;
-color: #fff;
-left: 25%;
-bottom: 45%;
-`
+  font-size: 12px;
+  color: #fff;
+  /* left: 25%; */
+  /* bottom: 135%; */
+`;
 
-export const DataNascimento = styled(Nome)`
+export const DataNascimento = styled(Nome)``;
 
-`
-
-export const HoraMarcada = styled(Nome)`
-
-`
+export const HoraMarcada = styled(Nome)``;
 
 export const NomeBarbeiro = styled.Text`
     font-size: 14px;
@@ -79,7 +74,7 @@ export const TextoHora = styled(Text)`
     font-size: 10px;
     font-family: "Poppins_400Regular";
 
-    ${props => props.clickButton ? 
+    ${props => props.clickButton ?
     css`
       color: black; 
     `

@@ -13,6 +13,14 @@ export const ButtonStyled = styled.TouchableOpacity`
     margin-bottom: 42px;
 `
 
+export const CloseButton = styled.TouchableOpacity`
+/* left: 87%; */
+/* bottom: 205%; */
+    position: absolute;
+    top: 15px;
+    right: 15px;
+`
+
 export const ButtonBack = styled.TouchableOpacity`
     width: 40px;
     height: 40px;
@@ -28,15 +36,22 @@ export const ButtonLogin = styled(ButtonStyled)`
     margin-bottom: 10px;
 `
 
-export const CloseButton = styled.TouchableOpacity`
-left: 87%;
-bottom: 115%;
-`
-
 export const MenuButton = styled.TouchableOpacity`
     width: 30px;
     height: 30px;
     position: absolute;
     bottom: 98%;
     left: 8%;
+`
+export const AgendarButton = styled.TouchableOpacity`
+  width: 15%;
+  height: 100%;
+  border-radius: 10px;
+  /* left: 47%; */
+  top: -50%;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFB600;
+
+
 `
