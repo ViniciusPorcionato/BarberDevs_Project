@@ -83,17 +83,42 @@ flex-direction: row-reverse;
 `
 
 export const ContainerLocalizacao = styled.View`
-flex: 1;
-z-index: 1;
-position: absolute;
-top: 30%;
-background-color: white;
+align-items: center;
+bottom: 7%;
+gap: 10px;
+
 
 `
 
 export const TextPosition = styled.View`
 flex-direction: row;
 gap: 30px;
+
+
+`
+
+export const TextPositionSolo = styled.View`
+margin-bottom: 5pxs;
+
+`
+
+export const ContainerMapRua = styled.View`
+background-color: #FFB600;
+border-radius: 10px;
+padding: 5px;
+width: 150px;
 align-items: center;
-justify-content: center;
+
+
+`;
+
+export const ContainerMapNum = styled(ContainerMapRua)``;
+
+export const ContainerMapBairro = styled(ContainerMapRua)``;
+
+export const ContainerHome = styled.View`
+flex: 1;
+background-color: #272727;
+
+
 `
