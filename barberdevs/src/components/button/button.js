@@ -55,3 +55,30 @@ export const AgendarButton = styled.TouchableOpacity`
 
 
 `
+
+export const MenuButton_Styled_Agendamentos = styled(MenuButton)`
+    bottom: 93%;
+    left: 8%;
+`
+
+export const Link = styled.TouchableOpacity`
+    height: 40px;
+    width: 140px;
+    background-color: transparent;
+    border-bottom-color: #FFFFFF;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    align-items: flex-end;
+    justify-content: center;
+`
+
+export const LogOutButton = styled.TouchableOpacity`
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    background-color: #FFB600;
+    align-items: center;
+    justify-content: center;
+    margin-left: 113px;
+    margin-top: 118px;
+`

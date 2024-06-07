@@ -1,17 +1,19 @@
 import { useState } from "react"
-import { Container, FormBox, IconBox } from "../../components/Container/Container"
+import { ContainerPerfil, FormBox, IconBox } from "../../components/Container/Container"
 import { ButtonLogin, MenuButton } from "../../components/button/button"
 import { InputPerfil } from "../../components/input/Input"
 import { TextButton, TextCop_Styled_Perfil } from "../../components/text/text"
 import { ImgPerfil } from "../../components/logo/logo"
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer"
 
-export const TelaPerfil = () => {
+export const TelaPerfil = ({navigation}) => {
     const [editing, setEditing] = useState(false)
+    const [visible, setVisible] = useState(false)
     return (
-        <Container>
-            <MenuButton>
+        <ContainerPerfil>
+            <MenuButton onPress={() => setVisible(true)}>
                 <Ionicons name="menu-sharp" size={30} color="white" />
             </MenuButton>
 
@@ -56,6 +58,12 @@ export const TelaPerfil = () => {
 
             <TextCop_Styled_Perfil>© 2024 BarberDevs. Todos os direitos reservados. TM BarberDevs.</TextCop_Styled_Perfil>
 
-        </Container>
+            <MenuHemburguer
+                visible={visible}
+                navigation={navigation}
+                setVisible={setVisible}
+            />
+
+        </ContainerPerfil>
     )
 }

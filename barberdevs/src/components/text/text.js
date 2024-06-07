@@ -84,9 +84,26 @@ export const TextoHora = styled(Text)`
 `
 
 export const TextCop_Styled_Agendar = styled(TextCop)`
-    top: 10%;
+  top: 10%;
 `
 
 export const TextCop_Styled_Perfil = styled(TextCop)`
-    top: 8%;
+  top: 5%;
+`
+
+export const TextCop_Styled_Menu = styled(TextCop)`
+  top: 14%;
+  left: 10%;
+`
+
+export const NomeModal = styled.Text`
+  font-size: 20px;
+  font-family: "Lato_400Regular";
+  color: white;
+`
+
+export const LinkText = styled.Text`
+  font-size: 16px;
+  font-family: "Lato_400Regular";
+  color: #FFB600;
 `

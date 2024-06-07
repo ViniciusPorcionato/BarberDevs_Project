@@ -103,7 +103,7 @@ export const CardHorario = styled.TouchableOpacity`
   border-radius:5px;
   margin-right: 20px;
 
-  ${props => props.clickButton ? 
+  ${props => props.clickButton ?
     css`
       background-color: #FFB600; 
     `
@@ -160,4 +160,42 @@ flex-direction: row;
 gap: 30px;
 align-items: center;
 justify-content: center;
+`
+
+export const ContainerPerfil = styled(Container)`
+  background-color: #272727;
+`
+
+export const MenuModal = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.60);
+`
+
+export const MenuModalView = styled.View`
+  height: 100%;
+  width: 65%;
+  background-color: #181818;
+  align-self: flex-start;
+  padding-top: 55px;
+  border-radius: 0px 10px 10px 0px;
+  border-right-width: 1px ;
+  border-right-color: #FFB600;
+  border-right-width: solid ;
+
+`
+
+export const ModalHeader = styled.View`
+  flex-direction: row;
+  gap: 18px;
+  margin-bottom: 100px;
+  margin-left: 33px;
+  align-items: center;
+`
+
+export const Nav = styled.View`
+  gap: 40px;
+  flex-direction: column;
+  justify-content: space-between;
 `

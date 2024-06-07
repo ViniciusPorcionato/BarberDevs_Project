@@ -48,10 +48,11 @@ export default function App() {
           />
 
           <Stack.Screen
-            name="TelaLocalizacao"
-            component={TelaLocalizacao}
-            options={{ title: "Tela de Localização" }}
+            name="TelaPerfil"
+            component={TelaPerfil}
+            options={{ title: "Tela de Perfil" }}
           />
+
 
           {/* TELA DE INICIO */}
           <Stack.Screen
@@ -90,16 +91,18 @@ export default function App() {
             options={{ title: "TelaRecSenha" }}
           />
 
-          <Stack.Screen
-            name="TelaPerfil"
-            component={TelaPerfil}
-            options={{ title: "Tela de Perfil" }}
-          />
+
 
           <Stack.Screen
             name="TelaAgendamento"
             component={TelaAgendamento}
             options={{ title: "Tela de Agendamento" }}
+          />
+
+          <Stack.Screen
+            name="TelaLocalizacao"
+            component={TelaLocalizacao}
+            options={{ title: "Tela de Localização" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
