@@ -12,13 +12,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { TelaEntrada } from "./src/screens/TelaEntrada/TelaEntrada";
 import { Login } from './src/screens/TelaLogin/TelaDeLogin';
 import { TelaListagemAgendamento } from './src/screens/TelaListagemAgendamento/TelaListagemAgendamento';
+import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
+import { TelaLocalizacao } from './src/screens/TelaLocalizacao/TelaLocalizacao.js';
+import { TelaHome } from './src/screens/TelaHome/TelaHome.js';
 import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
 import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
 import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
-import { CriarConta } from './src/screens/TelaCriarConta/TelaCriarConta.js';
+import {TelaPerfil} from './src/screens/TelaPerfil/TelaPerfil.js'
 import { TelaAgendamento } from './src/screens/TelaAgendamento/TelaAgendamento.js';
-import { TelaPerfil } from './src/screens/TelaPerfil/TelaPerfil.js';
-import { TelaLocalizacao } from './src/screens/TelaLocalizacao/TelaLocalizacao.js';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +43,18 @@ export default function App() {
       />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+
+          {/* TELA DE INICIO */}
+          <Stack.Screen
+            name="TelaHome"
+            component={TelaHome}
+            options={{ title: "Tela da Home" }}
+          />
+          <Stack.Screen
+            name="TelaLocalizacao"
+            component={TelaLocalizacao}
+            options={{ title: "Tela de Localização" }}
+          />
           <Stack.Screen
             name="TelaListagemAgendamento"
             component={TelaListagemAgendamento}

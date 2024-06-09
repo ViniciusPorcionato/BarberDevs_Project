@@ -1,22 +1,39 @@
 import { View } from "react-native";
-import { ContainerLocalizacao, TextPosition } from "../../components/Container/Container";
+import {
+  ContainerLocalizacao,
+  TextPosition,
+  TextPositionSolo,
+  ContainerMapRua,
+  ContainerMapNum,
+  ContainerMapBairro,
+} from "../../components/Container/Container";
 import Map from "../../components/Map/Map";
 import Text from "../../components/text/text";
 
 export const TelaLocalizacao = () => {
   return (
     <>
-      <View style={{ flex: 1 }}>
-        <Map style={{ flex: 1 }} />
-
-{/* ARRUMA CONTAINER DOS BOTÕES */}
+      <View style={{ flex: 1, backgroundColor: '#272727', }}>
+        <Map style={{ flex: 1, }} />
 
         <ContainerLocalizacao>
+
+          <TextPositionSolo>
+            <ContainerMapRua>
+              <Text style={{ color: '#000' }}>Rua Exemplo...</Text>
+            </ContainerMapRua>
+          </TextPositionSolo>
+
           <TextPosition>
-            <Text style={{ color: "black" }}>asdasdasd</Text>
-            <Text style={{ color: "black" }}>asdasdasd</Text>
-            <Text style={{ color: "black" }}>asdasdasd</Text>
+            <ContainerMapNum>
+              <Text style={{ color: '#000' }}>Número</Text>
+            </ContainerMapNum>
+
+            <ContainerMapBairro>
+              <Text style={{ color: '#000' }}>Bairro</Text>
+            </ContainerMapBairro>
           </TextPosition>
+
         </ContainerLocalizacao>
       </View>
     </>

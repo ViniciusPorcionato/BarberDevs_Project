@@ -14,8 +14,7 @@ export const ButtonStyled = styled.TouchableOpacity`
 `
 
 export const CloseButton = styled.TouchableOpacity`
-/* left: 87%; */
-/* bottom: 205%; */
+
     position: absolute;
     top: 15px;
     right: 15px;
@@ -52,8 +51,6 @@ export const AgendarButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   background-color: #FFB600;
-
-
 `
 
 export const MenuButton_Styled_Agendamentos = styled(MenuButton)`

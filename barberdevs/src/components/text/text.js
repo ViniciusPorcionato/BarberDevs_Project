@@ -3,7 +3,8 @@ import styled, { css } from "styled-components";
 export const Text = styled.Text`
   font-size: 16px;
   font-family: "Poppins_400Regular";
-`
+  
+`;
 
 export const TextAgendamento = styled(Text)`
   color: #fff;
