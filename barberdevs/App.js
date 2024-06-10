@@ -18,7 +18,7 @@ import { TelaHome } from './src/screens/TelaHome/TelaHome.js';
 import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
 import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
 import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
-import {TelaPerfil} from './src/screens/TelaPerfil/TelaPerfil.js'
+import { TelaPerfil } from './src/screens/TelaPerfil/TelaPerfil.js'
 import { TelaAgendamento } from './src/screens/TelaAgendamento/TelaAgendamento.js';
 
 
@@ -43,6 +43,8 @@ export default function App() {
       />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+
+
 
           {/* TELA DE INICIO */}
           <Stack.Screen
@@ -105,19 +107,12 @@ export default function App() {
             options={{ title: "TelaRecSenha" }}
           />
 
-
-
           <Stack.Screen
             name="TelaAgendamento"
             component={TelaAgendamento}
             options={{ title: "Tela de Agendamento" }}
           />
 
-          <Stack.Screen
-            name="TelaLocalizacao"
-            component={TelaLocalizacao}
-            options={{ title: "Tela de Localização" }}
-          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

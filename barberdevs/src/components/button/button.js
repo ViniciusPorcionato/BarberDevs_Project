@@ -58,6 +58,11 @@ export const MenuButton_Styled_Agendamentos = styled(MenuButton)`
     left: 8%;
 `
 
+export const MenuButton_Styled_Home = styled(MenuButton)`
+    bottom: 15%;
+    left: 0%;
+`
+
 export const Link = styled.TouchableOpacity`
     height: 40px;
     width: 140px;
@@ -79,3 +84,4 @@ export const LogOutButton = styled.TouchableOpacity`
     margin-left: 113px;
     margin-top: 118px;
 `
+

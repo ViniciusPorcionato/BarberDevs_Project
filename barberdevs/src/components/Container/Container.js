@@ -31,6 +31,7 @@ export const ContainerCinza = styled.View`
   justify-content: flex-start;
   margin-top: 7%;
   padding-right: 5%;
+  gap: 5px;
 `;
 
 export const ContainerAgendamento = styled.View`
@@ -180,10 +181,10 @@ export const ContainerMapNum = styled(ContainerMapRua)``;
 
 export const ContainerMapBairro = styled(ContainerMapRua)``;
 
-export const ContainerHome = styled.View`
+export const ContainerHome = styled.ScrollView`
 flex: 1;
 background-color: #272727;
-
+gap: 30px;
 
 `
 
@@ -223,4 +224,36 @@ export const Nav = styled.View`
   gap: 40px;
   flex-direction: column;
   justify-content: space-between;
+`
+
+export const HomeBox = styled.View`
+  width: 90%;
+  margin-bottom: 30px;
+  align-items: center;
+`
+
+export const ContainerItems = styled.View`
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+`
+export const Item = styled.View`
+  align-items: center;
+  gap: 6px;
+`
+
+export const ImgBox = styled.View`
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+`
+
+export const HeaderHome = styled.View`
+  width: 90%;
+  justify-content: space-between;
+  margin-bottom: 32px;
 `

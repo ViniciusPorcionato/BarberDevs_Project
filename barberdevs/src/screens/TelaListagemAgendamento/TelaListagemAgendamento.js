@@ -2,7 +2,6 @@ import {
   ContainerAgendamento,
   ContainerFooter,
   IconContainer,
-  ContentIcon,
 } from "../../components/Container/Container";
 import { HeaderPerfil } from "../../components/HeaderPerfil/HeaderPerfil";
 import { ListaAgendados } from "../../components/ListaAgendados/ListaAgendados";

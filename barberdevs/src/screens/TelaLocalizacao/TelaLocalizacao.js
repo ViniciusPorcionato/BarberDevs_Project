@@ -7,14 +7,14 @@ import {
   ContainerMapNum,
   ContainerMapBairro,
 } from "../../components/Container/Container";
-import Map from "../../components/Map/Map";
-import Text from "../../components/text/text";
+import {Text} from "../../components/text/text";
+import {MapComponent} from "../../components/Map/Map"
 
 export const TelaLocalizacao = () => {
   return (
     <>
       <View style={{ flex: 1, backgroundColor: '#272727', }}>
-        <Map style={{ flex: 1, }} />
+        <MapComponent style={{ flex: 1, }} />
 
         <ContainerLocalizacao>
 

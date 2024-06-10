@@ -46,3 +46,14 @@ export const ImgModal = styled.Image`
     border-radius: 100px;
     
 `
+
+export const IconImg = styled.Image`
+    width: 40px;
+    height: 40px; 
+`
+
+export const ImgHome = styled.Image`
+    width: 100%;
+    height: 200px;
+    margin-bottom: 22px;
+`
