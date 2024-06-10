@@ -130,6 +130,19 @@ export const IconBox = styled.View`
   right: -28%;
 `
 
+// export const ContainerCamera = styled.View`
+// flex: 1;
+// background-color: #000;
+// `
+
+export const ContentCamera = styled.View`
+/* align-items: center; */
+/* justify-content: space-around;
+flex-direction: row; */
+/* top: 180%; */
+
+`
+
 
 
 export const ContentIcon = styled.View`
@@ -184,5 +197,11 @@ export const ContainerHome = styled.View`
 flex: 1;
 background-color: #272727;
 
+`
 
+export const ContainerCamera = styled.View`
+width: 90%;
+flex-direction: row;
+justify-content: space-evenly;
+padding-left: 60px;
 `

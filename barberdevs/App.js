@@ -20,6 +20,8 @@ import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEm
 import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
 import {TelaPerfil} from './src/screens/TelaPerfil/TelaPerfil.js'
 import { TelaAgendamento } from './src/screens/TelaAgendamento/TelaAgendamento.js';
+import { TelaCamera } from './src/screens/TelaCamera/TelaCamera.js';
+import { CameraPrescription } from './src/screens/TelaCameraTeste/TelaTesteCamera.js';
 
 
 const Stack = createNativeStackNavigator();
@@ -46,14 +48,24 @@ export default function App() {
 
           {/* TELA DE INICIO */}
           <Stack.Screen
+            name="TelaPerfil"
+            component={TelaPerfil}
+            options={{ title: "Tela de Perfil" }}
+          />
+          <Stack.Screen
+            name="CameraPrescription"
+            component={CameraPrescription}
+            options={{ title: "Tela da Camera Teste" }}
+          />
+          <Stack.Screen
+            name="TelaCamera"
+            component={TelaCamera}
+            options={{ title: "Tela da Camera" }}
+          />
+          <Stack.Screen
             name="TelaHome"
             component={TelaHome}
             options={{ title: "Tela da Home" }}
-          />
-          <Stack.Screen
-            name="TelaLocalizacao"
-            component={TelaLocalizacao}
-            options={{ title: "Tela de Localização" }}
           />
           <Stack.Screen
             name="TelaListagemAgendamento"
@@ -104,12 +116,7 @@ export default function App() {
             options={{ title: "TelaRecSenha" }}
           />
 
-          <Stack.Screen
-            name="TelaPerfil"
-            component={TelaPerfil}
-            options={{ title: "Tela de Perfil" }}
-          />
-
+          
           <Stack.Screen
             name="TelaAgendamento"
             component={TelaAgendamento}
