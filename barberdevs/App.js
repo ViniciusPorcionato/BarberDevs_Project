@@ -44,7 +44,11 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-
+          <Stack.Screen
+            name="TelaListagemAgendamento"
+            component={TelaListagemAgendamento}
+            options={{ title: "Tela de Listagem de Agendamento" }}
+          />
 
           {/* TELA DE INICIO */}
           <Stack.Screen
@@ -57,11 +61,7 @@ export default function App() {
             component={TelaLocalizacao}
             options={{ title: "Tela de Localização" }}
           />
-          <Stack.Screen
-            name="TelaListagemAgendamento"
-            component={TelaListagemAgendamento}
-            options={{ title: "Tela de Listagem de Agendamento" }}
-          />
+
 
           <Stack.Screen
             name="TelaPerfil"

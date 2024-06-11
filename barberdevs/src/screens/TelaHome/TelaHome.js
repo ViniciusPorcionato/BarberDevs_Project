@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { BarbeirosContainer, ContainerHome, ItemBox, HomeBox, ImgBox, Item, ContainerItems, Container, HeaderHome } from "../../components/Container/Container"
 import { HeaderPerfil } from "../../components/HeaderPerfil/HeaderPerfil"
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer"
@@ -8,8 +8,18 @@ import { ItemPrice, ItemText, NomeBarbeiro, SobreNosText, TextButton, TextCop_St
 import { Title_Home } from "../../components/tittle/tittle"
 import { Ionicons } from '@expo/vector-icons';
 
-export const TelaHome = ({ navigation }) => {
+export const TelaHome = ({ navigation, route }) => {
     const [visible, setVisible] = useState(false)
+
+    // const TeladosPrc = useRef(null);
+    // const scrollToY = route.params.scrollToY;
+
+    // useState(() => {
+    //     console.log(TeladosPrc);
+    //     if (TeladosPrc.current && scrollToY) {
+    //         TeladosPrc.current.scrollTo({ y: scrollToY, animated: true });
+    //     }
+    // }, [TeladosPrc, scrollToY])
     return (
         <ContainerHome>
             <Container>

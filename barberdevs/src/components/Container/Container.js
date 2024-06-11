@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { ImageBackground } from "../logo/logo";
+import { css } from "styled-components";
 
 export const Container = styled.View`
     flex: 1;
@@ -95,14 +96,14 @@ export const ItemBox = styled.View`
 `
 
 export const CardHorario = styled.TouchableOpacity`
-  width: 45px;
-  height: 30px;
+  width: 53px;
+  height: 35px;
   border: 0.5px solid #FFB600;
   align-items: center;
   justify-content: center;
-  margin-top: 30px; 
+  margin-top: 25px; 
   border-radius:5px;
-  margin-right: 20px;
+  margin-right: 10px;
 
   ${props => props.clickButton ?
     css`
@@ -201,15 +202,13 @@ export const MenuModal = styled.View`
 
 export const MenuModalView = styled.View`
   height: 100%;
-  width: 65%;
+  width: 265px;
   background-color: #181818;
   align-self: flex-start;
   padding-top: 55px;
   border-radius: 0px 10px 10px 0px;
   border-right-width: 1px ;
   border-right-color: #FFB600;
-  border-right-width: solid ;
-
 `
 
 export const ModalHeader = styled.View`

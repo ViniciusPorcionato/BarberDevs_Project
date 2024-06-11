@@ -85,3 +85,9 @@ export const LogOutButton = styled.TouchableOpacity`
     margin-top: 118px;
 `
 
+export const ButtonBack_Styled = styled(ButtonBack)`
+    background-color: #000000;
+    position: absolute;
+    top: 21px;
+    left: 21px;
+`
