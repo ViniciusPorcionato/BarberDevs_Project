@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { ContainerPerfil, FormBox, IconBox } from "../../components/Container/Container"
 import { ButtonLogin, MenuButton } from "../../components/button/button"
-import { InputPerfil } from "../../components/input/Input"
+import { InputPerfil } from "../../components/input/InputStyles"
 import { TextButton, TextCop_Styled_Perfil } from "../../components/text/text"
 import { ImgPerfil } from "../../components/logo/logo"
 import { FontAwesome } from '@expo/vector-icons';

@@ -1,6 +1,6 @@
 import { BoxInput, Container, RetirarMarginLogo } from "../../components/Container/Container"
 import { ButtonBack, ButtonLogin } from "../../components/button/button"
-import { InputLong } from "../../components/input/Input";
+import { InputLong } from "../../components/input/InputStyles";
 import { Logo_2 } from "../../components/logo/logo";
 import { AntDesign } from '@expo/vector-icons';
 import { TextButton, TextCop_Styled } from "../../components/text/text";

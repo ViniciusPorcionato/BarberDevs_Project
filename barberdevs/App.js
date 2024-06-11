@@ -47,6 +47,13 @@ export default function App() {
 
 
           {/* TELA DE INICIO */}
+
+          <Stack.Screen
+            name="TelaLogin"
+            component={Login}
+            options={{ title: "Tela de Login" }}
+          />
+
           <Stack.Screen
             name="TelaHome"
             component={TelaHome}
@@ -83,11 +90,6 @@ export default function App() {
             options={{ title: "Tela de Criar Conta" }}
           />
 
-          <Stack.Screen
-            name="TelaLogin"
-            component={Login}
-            options={{ title: "Tela de Login" }}
-          />
 
           <Stack.Screen
             name="TelaVerificaçãoEmail"

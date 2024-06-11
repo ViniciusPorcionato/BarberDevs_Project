@@ -1,12 +1,27 @@
 import { BoxInput, Container } from "../../components/Container/Container"
 import { ButtonBack, ButtonLogin } from "../../components/button/button"
-import { InputLong } from "../../components/input/Input";
+import { InputLong } from "../../components/input/InputStyles";
 import { Logo } from "../../components/logo/logo";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MiddleText, TextButton, TextCop } from "../../components/text/text";
+import { useState } from "react";
+import { InputBoxLong } from "../../components/input/Input";
 
 export const VerificacaoEmail = ({ navigation }) => {
+
+    const [email, setEmail] = useState("")
+
+    async function EnviarEmail() {
+        await api.post(`/RecupSenha/EnviarCodSenha?email=${email}`)
+        .then(() => {
+            navigation.replace("TelaCodigo", {emailRecuperacao: email})
+        }).catch(error => {
+            console.log(error);
+        }) 
+        
+    }
+
     return (
         <Container>
             <ButtonBack onPress={() => navigation.replace("TelaLogin")}>
@@ -18,9 +33,11 @@ export const VerificacaoEmail = ({ navigation }) => {
             <MiddleText>Digite seu e-mail de recuperação:</MiddleText>
 
             <BoxInput>
-                <InputLong
+                <InputBoxLong
                     placeholder={"Email"}
                     placeholderTextColor={"white"}
+                    fieldValue={email}
+                    onChangeText={(txt) => (setEmail(txt))}
                 />
             </BoxInput>
 
