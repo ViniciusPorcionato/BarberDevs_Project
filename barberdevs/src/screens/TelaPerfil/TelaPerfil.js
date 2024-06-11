@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Container,
   FormBox,
@@ -13,17 +13,24 @@ import { Ionicons } from "@expo/vector-icons";
 import { TelaCamera } from "../TelaCamera/TelaCamera";
 import { CameraPrescription } from "../TelaCameraTeste/TelaTesteCamera";
 
-export const TelaPerfil = ({navigation }) => {
+export const TelaPerfil = ({navigation, route }) => {
   const [editing, setEditing] = useState(false);
+
+  useEffect(() =>{
+    route.params?.photoUri!== null 
+    ? { uri: route.params.photoUri } 
+     : require("./../../assets/img/image8.png")
+  }, [route.params.photoUri])
   return (
     <Container>
       <MenuButton>
         <Ionicons name="menu-sharp" size={30} color="white" />
       </MenuButton>
 
-      <ImgPerfil source={require("./../../assets/img/image8.png")} />
+      
+      {route.params ? <ImgPerfil source={{ uri: route.params.photoUri }} /> : <ImgPerfil source={require("./../../assets/img/image8.png")} />}
 
-      <ButtoEnterCamera onPress={() => navigation.navigate(CameraPrescription) }>
+      <ButtoEnterCamera onPress={() => navigation.navigate(TelaCamera) }>
         {/* <IconBox */}
           {/* onPress={() => navigation.navigate(TelaCamera) }> */}
           <FontAwesome name="camera" size={32} color="#FFB600" />

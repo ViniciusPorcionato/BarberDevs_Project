@@ -71,7 +71,10 @@ export const ButtonToggle = styled.TouchableOpacity`
 `
 
 export const ButtonCloseCamera = styled.TouchableOpacity`
-background-color: transparent;
+top: 2%;
+left: 4%;
+/* position: absolute; */
+
 
 `
 export const ButtonGalery = styled.TouchableOpacity`
