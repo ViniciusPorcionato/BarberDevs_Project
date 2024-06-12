@@ -16,16 +16,18 @@ import { CameraPrescription } from "../TelaCameraTeste/TelaTesteCamera";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer"
 
 
-export const TelaPerfil = ({navigation}) => {
+export const TelaPerfil = ({navigation, route}) => {
     const [editing, setEditing] = useState(false)
     const [visible, setVisible] = useState(false)
  
 
   useEffect(() => {
-    route.params?.photoUri!== null 
-    ? { uri: route.params.photoUri } 
-     : require("./../../assets/img/image8.png")
-  }, [route.params.photoUri])
+    route.params == null 
+    ? require("./../../assets/img/image8.png") 
+     : { uri: route.param }
+  }, [route.param])
+
+
     return (
       <ContainerPerfil>
           <MenuButton onPress={() => setVisible(true)}>
