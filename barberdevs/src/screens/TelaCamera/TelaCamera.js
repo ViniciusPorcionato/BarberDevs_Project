@@ -17,6 +17,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { TelaPerfil } from "../TelaPerfil/TelaPerfil";
+import * as ImagePicker from 'expo-image-picker';
+
+
 
 export const TelaCamera = ({ navigation, navigate }) => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -24,6 +27,9 @@ export const TelaCamera = ({ navigation, navigate }) => {
   const [openModal, setOpenModal] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [type, setType] = useState(CameraType.back);
+  const [image, setImage] = useState(null);
+  const [selectedImageUri, setSelectedImageUri] = useState(null);
+
 
   useEffect(() => {
     (async () => {
@@ -80,6 +86,41 @@ export const TelaCamera = ({ navigation, navigate }) => {
     // })
   }
 
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setSelectedImageUri(result.assets[0].uri);
+      navigateToProfileWithImage()
+
+    }
+  };
+
+  
+  const handleGalleryPress = () => {
+    if (selectedImageUri) {
+      // Se a imagem já foi selecionada, navegue para a TelaPerfil
+      navigateToProfileWithImage();
+    } else {
+      // Se a imagem não foi selecionada, selecione a imagem
+      pickImage();
+    }
+  };
+  const navigateToProfileWithImage = () => {
+    navigation.navigate("TelaPerfil", { photoUri: selectedImageUri });
+  };
+
+
+//arrumar que o Uri nao passa para a telaPefil
+
   return (
     <>
       {/* <ContainerCamera> */}
@@ -88,7 +129,9 @@ export const TelaCamera = ({ navigation, navigate }) => {
           <AntDesign name="close" size={40} color="#FFB600" />
         </ButtonCloseCamera>
         <ContentCamera>
-          <ButtonGalery>
+
+          <ButtonGalery onPress={handleGalleryPress}>
+          {/* {image && <Image source={{ uri: image }} />} */}
             <MaterialCommunityIcons
               name="camera-burst"
               size={40}

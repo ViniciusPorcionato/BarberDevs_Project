@@ -12,20 +12,22 @@ import { ImgPerfil } from "../../components/logo/logo";
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { TelaCamera } from "../TelaCamera/TelaCamera";
-import { CameraPrescription } from "../TelaCameraTeste/TelaTesteCamera";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer"
 
 
-export const TelaPerfil = ({navigation}) => {
+
+export const TelaPerfil = ({navigation, route}) => {
     const [editing, setEditing] = useState(false)
     const [visible, setVisible] = useState(false)
+    // const { photoUri } = route.params;
+
  
 
   useEffect(() => {
-    route.params?.photoUri!== null 
-    ? { uri: route.params.photoUri } 
-     : require("./../../assets/img/image8.png")
-  }, [route.params.photoUri])
+    route.params == undefined 
+    ?  require("./../../assets/img/image8.png")
+     : { uri: route.params.photoUri }
+  }, ) //[route.params.photoUri]
     return (
       <ContainerPerfil>
           <MenuButton onPress={() => setVisible(true)}>

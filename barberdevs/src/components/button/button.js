@@ -60,10 +60,7 @@ export const ButtoEnterCamera = styled.TouchableOpacity`
   right: -24%;
 `;
 
-export const ButtonPicture = styled.TouchableOpacity`
-
-  background-color: #FFB600;
-`
+export const ButtonPicture = styled.TouchableOpacity``
 
 export const MenuButton_Styled_Agendamentos = styled(MenuButton)`
     bottom: 93%;
