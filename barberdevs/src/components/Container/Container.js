@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { ImageBackground } from "../logo/logo";
+import { css } from "styled-components";
 
 export const Container = styled.View`
   flex: 1;
@@ -30,6 +31,7 @@ export const ContainerCinza = styled.View`
   justify-content: flex-start;
   margin-top: 7%;
   padding-right: 5%;
+  gap: 5px;
 `;
 
 export const ContainerAgendamento = styled.View`
@@ -91,16 +93,20 @@ export const ItemBox = styled.View`
 `;
 
 export const CardHorario = styled.TouchableOpacity`
-  width: 45px;
-  height: 30px;
-  border: 0.5px solid #ffb600;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  border-radius: 5px;
-  margin-right: 20px;
+ width: 53px;
+   height: 35px;
+   border: 0.5px solid #FFB600;
+   align-items: center;
+   justify-content: center;
+   margin-top: 25px; 
+   border-radius:5px;
+   margin-right: 10px;
+ 
 
   ${(props) =>
+
+
+  
     props.clickButton
       ? css`
           background-color: #ffb600;
@@ -109,7 +115,6 @@ export const CardHorario = styled.TouchableOpacity`
           background-color: transparent;
         `}
 `;
-
 export const CardsConatiner = styled.View`
   width: 90%;
 `;
@@ -181,10 +186,6 @@ export const ContainerMapNum = styled(ContainerMapRua)``;
 
 export const ContainerMapBairro = styled(ContainerMapRua)``;
 
-export const ContainerHome = styled.View`
-  flex: 1;
-  background-color: #272727;
-`;
 
 export const ContainerCamera = styled.View`
   /* width: 90%; */
@@ -194,7 +195,79 @@ export const ContainerCamera = styled.View`
 `;
 
 export const ContainerModalImage = styled.View`
+`
 
+export const ContainerHome = styled.ScrollView`
+flex: 1;
+background-color: #272727;
+gap: 30px;
 
+`
 
+export const ContainerPerfil = styled(Container)`
+  background-color: #272727;
+`
+
+export const MenuModal = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.60);
+`
+
+export const MenuModalView = styled.View`
+  height: 100%;
+  width: 265px;
+  background-color: #181818;
+  align-self: flex-start;
+  padding-top: 55px;
+  border-radius: 0px 10px 10px 0px;
+  border-right-width: 1px ;
+  border-right-color: #FFB600;
+`
+
+export const ModalHeader = styled.View`
+  flex-direction: row;
+  gap: 18px;
+  margin-bottom: 100px;
+  margin-left: 33px;
+  align-items: center;
+`
+
+export const Nav = styled.View`
+  gap: 40px;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+export const HomeBox = styled.View`
+  width: 90%;
+  margin-bottom: 30px;
+  align-items: center;
+`
+
+export const ContainerItems = styled.View`
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+`
+export const Item = styled.View`
+  align-items: center;
+  gap: 6px;
+`
+
+export const ImgBox = styled.View`
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+`
+
+export const HeaderHome = styled.View`
+  width: 90%;
+  justify-content: space-between;
+  margin-bottom: 32px;
 `

@@ -24,3 +24,10 @@ export const Title_Agendar= styled(Title)`
     margin-top: 6px;
     margin-left: 16px;
 `
+
+export const Title_Home = styled(Title)`
+    font-size: 16px;
+    color: #DAA520;
+    margin-bottom: 23px;
+    margin-left: -30px;
+`

@@ -72,7 +72,7 @@ export const NomeBarbeiro = styled.Text`
 `
 
 export const TextoHora = styled(Text)`
-    font-size: 10px;
+    font-size: 12px;
     font-family: "Poppins_400Regular";
 
     ${props => props.clickButton ?
@@ -85,9 +85,45 @@ export const TextoHora = styled(Text)`
 `
 
 export const TextCop_Styled_Agendar = styled(TextCop)`
-    top: 10%;
+  top: 10%;
 `
 
 export const TextCop_Styled_Perfil = styled(TextCop)`
-    top: 8%;
+  top: 5%;
+`
+
+export const TextCop_Styled_Menu = styled(TextCop)`
+  top: 14%;
+  left: 10%;
+`
+export const TextCop_Styled_Home = styled(TextCop)`
+  top: 0%;
+`
+
+export const NomeModal = styled.Text`
+  font-size: 20px;
+  font-family: "Lato_400Regular";
+  color: white;
+`
+
+export const LinkText = styled.Text`
+  font-size: 16px;
+  font-family: "Lato_400Regular";
+  color: #FFB600;
+`
+
+export const ItemText = styled.Text`
+  font-size: 14px;
+  font-family: "Lato_400Regular";
+  color: #FFF;
+`
+
+export const ItemPrice = styled(ItemText)`
+  font-size: 12px;
+  color: #23AF00;
+`
+
+export const SobreNosText = styled(ItemText)`
+  font-size: 12px;
+  text-align: center;
 `

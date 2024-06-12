@@ -37,5 +37,23 @@ export const ImgPerfil = styled.Image`
     width: 211px;
     height: 211px;
     border-radius: 50px;
+    margin-top: 20px;
+`
+
+export const ImgModal = styled.Image`
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
     
+`
+
+export const IconImg = styled.Image`
+    width: 40px;
+    height: 40px; 
+`
+
+export const ImgHome = styled.Image`
+    width: 100%;
+    height: 200px;
+    margin-bottom: 22px;
 `

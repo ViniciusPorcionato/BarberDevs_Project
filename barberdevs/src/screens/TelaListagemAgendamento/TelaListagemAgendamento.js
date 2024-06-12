@@ -2,18 +2,19 @@ import {
   ContainerAgendamento,
   ContainerFooter,
   IconContainer,
-  ContentIcon,
 } from "../../components/Container/Container";
 import { HeaderPerfil } from "../../components/HeaderPerfil/HeaderPerfil";
 import { ListaAgendados } from "../../components/ListaAgendados/ListaAgendados";
-import { MenuButton } from "../../components/button/button";
+import { MenuButton_Styled_Agendamentos } from "../../components/button/button";
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { TitleAgendamento } from "../../components/tittle/tittle";
 import { FlatList } from "react-native";
 import { AgendarButton } from "../../components/button/button";
+import { useState } from "react";
+import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer";
 
-export const TelaListagemAgendamento = ({ data, index, item }) => {
+export const TelaListagemAgendamento = ({ navigation }) => {
   const agendamentos = [
     {
       id: 1,
@@ -74,12 +75,14 @@ export const TelaListagemAgendamento = ({ data, index, item }) => {
 
     // Adicione mais agendamentos conforme necessário
   ];
+
+  const [visible, setVisible] = useState(false)
   return (
     <ContainerAgendamento>
 
-      <MenuButton>
+      <MenuButton_Styled_Agendamentos onPress={() => setVisible(true)}>
         <Ionicons name="menu-sharp" size={30} color="white" />
-      </MenuButton>
+      </MenuButton_Styled_Agendamentos>
 
       <HeaderPerfil />
 
@@ -99,15 +102,21 @@ export const TelaListagemAgendamento = ({ data, index, item }) => {
 
       <ContainerFooter>
 
-        <AgendarButton>
+        <AgendarButton onPress={() => navigation.replace("TelaAgendamento")}>
 
           <IconContainer>
             <FontAwesome6 name="scissors" size={24} color="black" />
           </IconContainer>
-          
+
         </AgendarButton>
 
       </ContainerFooter>
+
+      <MenuHemburguer
+        visible={visible}
+        navigation={navigation}
+        setVisible={setVisible}
+      />
 
     </ContainerAgendamento>
   );

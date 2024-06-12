@@ -18,7 +18,7 @@ import { TelaHome } from './src/screens/TelaHome/TelaHome.js';
 import { EnvioDeCodigo } from './src/screens/TelaCodigo/TelaCodigo';
 import { VerificacaoEmail } from './src/screens/TelaVerificaçãoEmail/TelaVerEmail';
 import { RecuperarSenha } from './src/screens/TelaRecuperaçãoSenha/TelaRecSenha.js';
-import {TelaPerfil} from './src/screens/TelaPerfil/TelaPerfil.js'
+import { TelaPerfil } from './src/screens/TelaPerfil/TelaPerfil.js'
 import { TelaAgendamento } from './src/screens/TelaAgendamento/TelaAgendamento.js';
 import { TelaCamera } from './src/screens/TelaCamera/TelaCamera.js';
 // import { CameraPrescription } from './src/screens/TelaCameraTeste/TelaTesteCamera.js';
@@ -46,6 +46,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
+          <Stack.Screen
+            name="TelaListagemAgendamento"
+            component={TelaListagemAgendamento}
+            options={{ title: "Tela de Listagem de Agendamento" }}
+          />
+
           {/* TELA DE INICIO */}
           <Stack.Screen
             name="TelaPerfil"
@@ -64,17 +70,12 @@ export default function App() {
             options={{ title: "Tela da Home" }}
           />
           <Stack.Screen
-            name="TelaListagemAgendamento"
-            component={TelaListagemAgendamento}
-            options={{ title: "Tela de Listagem de Agendamento" }}
-          />
-
-          <Stack.Screen
             name="TelaLocalizacao"
             component={TelaLocalizacao}
             options={{ title: "Tela de Localização" }}
           />
 
+          {/* TELA DE INICIO */}
           <Stack.Screen
             name="TelaEntrada"
             component={TelaEntrada}
@@ -110,13 +111,12 @@ export default function App() {
             component={RecuperarSenha}
             options={{ title: "TelaRecSenha" }}
           />
-
-          
           <Stack.Screen
             name="TelaAgendamento"
             component={TelaAgendamento}
             options={{ title: "Tela de Agendamento" }}
           />
+
         </Stack.Navigator>
       </NavigationContainer>
     </>

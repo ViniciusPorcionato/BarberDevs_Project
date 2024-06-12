@@ -62,22 +62,52 @@ export const ButtoEnterCamera = styled.TouchableOpacity`
 
 export const ButtonPicture = styled.TouchableOpacity`
 
-
+  background-color: #FFB600;
 `
 
-export const ButtonToggle = styled.TouchableOpacity`
-
-
+export const MenuButton_Styled_Agendamentos = styled(MenuButton)`
+    bottom: 93%;
+    left: 8%;
 `
+
+export const ButtonToggle = styled.TouchableOpacity``
 
 export const ButtonCloseCamera = styled.TouchableOpacity`
 top: 2%;
 left: 4%;
 /* position: absolute; */
-
-
 `
-export const ButtonGalery = styled.TouchableOpacity`
+export const ButtonGalery = styled.TouchableOpacity``
+export const MenuButton_Styled_Home = styled(MenuButton)`
+    bottom: 15%;
+    left: 0%;
+`
 
+export const Link = styled.TouchableOpacity`
+    height: 40px;
+    width: 140px;
+    background-color: transparent;
+    border-bottom-color: #FFFFFF;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    align-items: flex-end;
+    justify-content: center;
+`
 
+export const LogOutButton = styled.TouchableOpacity`
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    background-color: #FFB600;
+    align-items: center;
+    justify-content: center;
+    margin-left: 113px;
+    margin-top: 118px;
+`
+
+export const ButtonBack_Styled = styled(ButtonBack)`
+    background-color: #000000;
+    position: absolute;
+    top: 21px;
+    left: 21px;
 `
