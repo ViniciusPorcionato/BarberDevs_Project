@@ -102,7 +102,7 @@ export const TelaListagemAgendamento = ({ navigation }) => {
 
       <ContainerFooter>
 
-        <AgendarButton>
+        <AgendarButton onPress={() => navigation.replace("TelaAgendamento")}>
 
           <IconContainer>
             <FontAwesome6 name="scissors" size={24} color="black" />

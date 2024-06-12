@@ -150,7 +150,7 @@ export const TelaAgendamento = ({ navigation }) => {
                 <TextButton>Confirmar</TextButton>
             </ButtonLogin>
 
-            <TextLinkStyled onPress={() => navigation.replace("")}>Cancelar</TextLinkStyled>
+            <TextLinkStyled onPress={() => navigation.replace("TelaListagemAgendamento")}>Cancelar</TextLinkStyled>
 
             <TextCop_Styled_Agendar>© 2024 BarberDevs. Todos os direitos reservados. TM BarberDevs.</TextCop_Styled_Agendar>
 

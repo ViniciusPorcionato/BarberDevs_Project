@@ -72,7 +72,7 @@ export const NomeBarbeiro = styled.Text`
 `
 
 export const TextoHora = styled(Text)`
-    font-size: 10px;
+    font-size: 12px;
     font-family: "Poppins_400Regular";
 
     ${props => props.clickButton ?
@@ -124,6 +124,6 @@ export const ItemPrice = styled(ItemText)`
 `
 
 export const SobreNosText = styled(ItemText)`
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
 `

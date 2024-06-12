@@ -30,16 +30,16 @@ export const MenuHemburguer = ({ navigation, visible, setVisible }) => {
                     </ModalHeader>
 
                     <Nav>
-                        <Link>
+                        <Link onPress={() => navigation.replace("TelaHome")}>
                             <LinkText>Home</LinkText>
                         </Link>
-                        <Link>
+                        <Link onPress={() => navigation.replace("TelaListagemAgendamento")}>
                             <LinkText>Agendar</LinkText>
                         </Link>
-                        <Link>
+                        <Link onPress={() => navigation.replace("TelaPerfil")}>
                             <LinkText>Perfil</LinkText>
                         </Link>
-                        <Link>
+                        <Link onPress={() => navigation.replace("TelaHome", { scrollToY: 2000 })}>
                             <LinkText>Sobre nós</LinkText>
                         </Link>
                     </Nav>
