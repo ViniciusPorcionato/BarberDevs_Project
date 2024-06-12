@@ -11,10 +11,34 @@ import { Ionicons } from '@expo/vector-icons';
 import { TitleAgendamento } from "../../components/tittle/tittle";
 import { FlatList } from "react-native";
 import { AgendarButton } from "../../components/button/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer";
+import api from "../../Service/Service";
+import { userDecodeToken } from "../../Utils/Auth";
 
 export const TelaListagemAgendamento = ({ navigation }) => {
+
+  const [agendamentosClientes, setAgendamentosClientes] = useState();
+
+async function GetToken()
+{
+  const token = await userDecodeToken();
+
+  if (token) {
+    console.log('token?');
+    console.log(token);
+  }
+}
+
+async function BuscarAgendamentoCliente() {
+  await api.get(`/Agendamento/AgendamentosCliente`)
+  .then((response) => {
+    setAgendamentosClientes(response.data)
+  }).catch(error => {
+    console.log(error);
+  })
+}
+
   const agendamentos = [
     {
       id: 1,
@@ -77,6 +101,20 @@ export const TelaListagemAgendamento = ({ navigation }) => {
   ];
 
   const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    GetToken();
+  }, [])
+
+  useEffect(() => {
+    BuscarAgendamentoCliente();
+  }, [])
+
+  useEffect(() => {
+    console.log("agendamento?");
+    console.log(agendamentosClientes);
+  }, [agendamentosClientes])
+
   return (
     <ContainerAgendamento>
 
@@ -88,13 +126,13 @@ export const TelaListagemAgendamento = ({ navigation }) => {
 
       <TitleAgendamento>Seus agendamentos:</TitleAgendamento>
       <FlatList
-        data={agendamentos}
+        // data={agendamentos}
+        data={agendamentosClientes}
         renderItem={({ item }) => (
           <ListaAgendados
-            nome={item.nome}
-            dataNascimento={item.dataNascimento}
-            horaMarcada={item.horaMarcada}
-            fotoPerfil={item.fotoPerfil}
+            nome={item.idBarbeiroNavigation.idBarbeiroNavigation.nome}
+            horaMarcada={item.dataAgendamento}
+            fotoPerfil={item.idBarbeiroNavigation.idBarbeiroNavigation.foto}
           />
         )}
         keyExtractor={(item) => item.id}
