@@ -7,6 +7,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { MiddleText, TextButton, TextCop } from "../../components/text/text";
 import { useState } from "react";
 import { InputBoxLong } from "../../components/input/Input";
+import api from "../../Service/Service";
+import { ActivityIndicator } from "react-native";
 
 export const VerificacaoEmail = ({ navigation }) => {
 
@@ -15,7 +17,7 @@ export const VerificacaoEmail = ({ navigation }) => {
     async function EnviarEmail() {
         await api.post(`/RecupSenha/EnviarCodSenha?email=${email}`)
         .then(() => {
-            navigation.replace("TelaCodigo", {emailRecuperacao: email})
+                navigation.replace("TelaCodigo", {emailRecuperacao: email})
         }).catch(error => {
             console.log(error);
         }) 
@@ -41,7 +43,7 @@ export const VerificacaoEmail = ({ navigation }) => {
                 />
             </BoxInput>
 
-            <ButtonLogin onPress={() => navigation.replace("TelaCodigo")}>
+            <ButtonLogin onPress={(e) => EnviarEmail()}>
                 <TextButton>Enviar código</TextButton>
             </ButtonLogin>
 
