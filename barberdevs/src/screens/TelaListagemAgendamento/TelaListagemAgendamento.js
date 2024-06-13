@@ -14,13 +14,14 @@ import { AgendarButton } from "../../components/button/button";
 import { useState, useEffect } from "react";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer";
 import api from "../../Service/Service";
-import { userDecodeToken } from "../../Utils/Auth";
+import { userDecodeToken } from "../../utils/Auth";
 
 export const TelaListagemAgendamento = ({ navigation }) => {
   const [agendamentosClientes, setAgendamentosClientes] = useState();
 
   const [profile, setProfile] = useState("");
   const [role, setRole] = useState("");
+  const [visible, setVisible] = useState(false)
 
   async function ProfileLoad() {
     const token = await userDecodeToken();
@@ -28,7 +29,6 @@ export const TelaListagemAgendamento = ({ navigation }) => {
     if (token != null) {
       setProfile(token);
       setRole(token.role);
-
       BuscarAgendamentoCliente(token)
     }
   }
@@ -49,9 +49,6 @@ export const TelaListagemAgendamento = ({ navigation }) => {
       });
   }
 
-
-  const [visible, setVisible] = useState(false);
-
   useEffect(() => {
     ProfileLoad();
   }, []);
@@ -59,6 +56,11 @@ export const TelaListagemAgendamento = ({ navigation }) => {
 
   useEffect(() => {
   }, [agendamentosClientes]);
+
+  useEffect(() => {
+    ProfileLoad()
+  }, [])
+
 
   return (
     <ContainerAgendamento>

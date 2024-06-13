@@ -14,7 +14,6 @@ import { GlobalInput } from "../../components/input/GlobalInput";
 import { useState } from "react";
 
 export const Login = ({ navigation }) => {
-
   const [email, setEmail] = useState("porcionatovinicius@gmail.com");
   const [senha, setSenha] = useState("vini123");
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,6 +28,7 @@ export const Login = ({ navigation }) => {
       })
       .then(async (response) => {
         await AsyncStorage.setItem("token",JSON.stringify(response.data.token));
+
 
         navigation.navigate("TelaHome");
 

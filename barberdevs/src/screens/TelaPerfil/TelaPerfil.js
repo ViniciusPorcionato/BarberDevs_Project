@@ -14,33 +14,80 @@ import { Ionicons } from "@expo/vector-icons";
 import { TelaCamera } from "../TelaCamera/TelaCamera";
 import { CameraPrescription } from "../TelaCameraTeste/TelaTesteCamera";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer"
+import api from "../../Service/Service";
+import { userDecodeToken } from "../../utils/Auth";
 
 
-export const TelaPerfil = ({navigation, route}) => {
-    const [editing, setEditing] = useState(false)
-    const [visible, setVisible] = useState(false)
- 
+export const TelaPerfil = ({ navigation, route }) => {
+  const [editing, setEditing] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [nome, setNome] = useState("")
+  const [email, setEmail] = useState("")
+  const [rg, setRg] = useState("")
+  const [cpf, setCpf] = useState("")
+  const [token, setToken] = useState({})
+  const [photo, setPhoto] = useState(null);
+  const [baseUser, setBaseUser] = useState({})
+
+  async function UpdateFunction() {
+    setEditing(!editing)
+
+    await api.put(`/Cliente/AtualizarCliente?id=${token.jti}`, {
+      nome: nome,
+      email: email,
+      rg: rg,
+      cpf: cpf,
+    }).then(async () => {
+      await ProfileLoad()
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  async function ProfileLoad() {
+    const tokenDecode = await userDecodeToken();
+    if (tokenDecode) {
+      await setToken(tokenDecode)
+      await BuscarUsuario(tokenDecode)
+    }
+  }
+
+  async function BuscarUsuario(tokenUser) {
+    console.log(tokenUser);
+    try {
+
+      const response = await api.get(`/Usuario/BuscarPorId?id=${tokenUser.jti}`);
+
+      setBaseUser(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    route.params == null 
-    ? require("./../../assets/img/image8.png") 
-     : { uri: route.param }
+    route.params == null
+      ? require("./../../assets/img/image8.png")
+      : { uri: route.param }
   }, [route.param])
 
+  useEffect(() => {
+    ProfileLoad()
+  }, [])
 
-    return (
-      <ContainerPerfil>
-          <MenuButton onPress={() => setVisible(true)}>
-              <Ionicons name="menu-sharp" size={30} color="white" />
-          </MenuButton>
 
-      
+  return (
+    <ContainerPerfil>
+      <MenuButton onPress={() => setVisible(true)}>
+        <Ionicons name="menu-sharp" size={30} color="white" />
+      </MenuButton>
+
+
       {route.params ? <ImgPerfil source={{ uri: route.params.photoUri }} /> : <ImgPerfil source={require("./../../assets/img/image8.png")} />}
 
-      <ButtoEnterCamera onPress={() => navigation.navigate(TelaCamera) }>
+      <ButtoEnterCamera onPress={() => navigation.navigate(TelaCamera)}>
         {/* <IconBox */}
-          {/* onPress={() => navigation.navigate(TelaCamera) }> */}
-          <FontAwesome name="camera" size={32} color="#FFB600" />
+        {/* onPress={() => navigation.navigate(TelaCamera) }> */}
+        <FontAwesome name="camera" size={32} color="#FFB600" />
         {/* </IconBox> */}
       </ButtoEnterCamera>
 
@@ -49,26 +96,30 @@ export const TelaPerfil = ({navigation, route}) => {
           placeholder={"Nome"}
           editable={editing}
           placeholderTextColor={"#FFFFFF"}
+          onChangeText={(txt) => setNome(txt)}
         />
         <InputPerfil
           placeholder={"Email"}
           editable={editing}
           placeholderTextColor={"#FFFFFF"}
+          onChangeText={(txt) => setEmail(txt)}
         />
         <InputPerfil
           placeholder={"RG"}
           editable={editing}
           placeholderTextColor={"#FFFFFF"}
+          onChangeText={(txt) => setRg(txt)}
         />
         <InputPerfil
           placeholder={"CPF"}
           editable={editing}
           placeholderTextColor={"#FFFFFF"}
+          onChangeText={(txt) => setCpf(txt)}
         />
       </FormBox>
 
       {editing ? (
-        <ButtonLogin onPress={() => setEditing(!editing)}>
+        <ButtonLogin onPress={() => UpdateFunction()}>
           <TextButton>Confirmar</TextButton>
         </ButtonLogin>
       ) : (
@@ -80,13 +131,13 @@ export const TelaPerfil = ({navigation, route}) => {
       <TextCop_Styled_Perfil>
         © 2024 BarberDevs. Todos os direitos reservados. TM BarberDevs.
       </TextCop_Styled_Perfil>
-      
-            <MenuHemburguer
-                visible={visible}
-                navigation={navigation}
-                setVisible={setVisible}
-            />
 
-        </ContainerPerfil>
-    )
+      <MenuHemburguer
+        visible={visible}
+        navigation={navigation}
+        setVisible={setVisible}
+      />
+
+    </ContainerPerfil>
+  )
 }
