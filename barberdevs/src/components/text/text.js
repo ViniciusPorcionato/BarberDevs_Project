@@ -127,3 +127,9 @@ export const SobreNosText = styled(ItemText)`
   font-size: 12px;
   text-align: center;
 `
+
+export const InfoCancell = styled.Text`
+  font-size:18px;
+  color: #FFFFFF;
+  text-align: center;
+`

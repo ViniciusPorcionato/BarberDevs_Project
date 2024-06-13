@@ -31,3 +31,11 @@ export const Title_Home = styled(Title)`
     margin-bottom: 23px;
     margin-left: -30px;
 `
+
+export const Title_Home_Styled = styled(Title_Home)`
+    font-size: 20px;
+    margin:0px;
+    align-self: center;
+    margin-left: -55px;
+    margin-bottom: 10px;
+`
