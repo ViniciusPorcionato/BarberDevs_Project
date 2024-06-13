@@ -8,7 +8,7 @@ import { InputLong } from "../../components/input/Input";
 import { Logo_2 } from "../../components/logo/logo";
 import { AntDesign } from "@expo/vector-icons";
 import { TextButton, TextCop_Styled } from "../../components/text/text";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import api from "../../services/Service";
 
 export const CriarConta = ({ navigation }) => {
@@ -16,12 +16,16 @@ export const CriarConta = ({ navigation }) => {
     nome: "",
     email: "",
     senha: "",
+    rg: "",
+    cpf: "",
     confsenha: "",
   });
 
+  const scrollViewRef = useRef(null);
+
   async function fillProfile() {
     if (Object.values(inputs).some((input) => input === "")) {
-      scrollViewRef.current.scrollTo({ y: 0, animated: true });
+      // scrollViewRef.current.scrollTo({ y: 0, animated: true });
 
       return;
     }
@@ -32,22 +36,30 @@ export const CriarConta = ({ navigation }) => {
     formData.append("email", inputs.email);
     formData.append("senha", inputs.senha);
     formData.append("confsenha", inputs.confsenha);
+    formData.append("rg", inputs.rg);
+    formData.append("cpf", inputs.cpf);
+    formData.append("idTipoUsuario", "37838AD6-CFC2-44AB-B6FF-652B3A5087FA")
 
+    console.log("teste321");
+    
     await api
       .post("/Cliente/CadastrarCliente", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((response) => {})
+      .then((response) => {
+        console.log("teste");
+      })
       .catch((error) => {
         console.error(error);
+        console.log("teste12");
       });
     navigation.navigate("TelaLogin");
   }
 
   return (
-    <Container>
+    <Container ref={scrollViewRef}>
       <ButtonBack onPress={() => navigation.replace("TelaEntrada")}>
         <AntDesign name="arrowleft" size={24} color="black" />
       </ButtonBack>
@@ -58,6 +70,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
+          inputValue={inputs.nome}
           placeholder={"Digite seu nome*"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, nome: text })}
@@ -66,6 +79,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
+          inputValue={inputs.email}
           placeholder={"Digite seu Email*"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, email: text })}
@@ -74,6 +88,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
+          inputValue={inputs.senha}
           placeholder={"Digite sua senha"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, senha: text })}
@@ -82,6 +97,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
+          inputValue={inputs.confsenha}
           placeholder={"Cofirme a senha"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, confsenha: text })}
