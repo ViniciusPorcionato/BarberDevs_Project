@@ -33,7 +33,7 @@ import { TelaCamera } from "./src/screens/TelaCamera/TelaCamera.js";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-    let [fontsLoaded, fontError] = useFonts({
+  let [fontsLoaded, fontError] = useFonts({
     Lato_400Regular,
     Lato_700Bold,
     Poppins_400Regular,
@@ -50,13 +50,18 @@ export default function App() {
       <StatusBar barStyle={"light-content"} />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* TELA DE INICIO */}
+          <Stack.Screen
+            name="TelaEntrada"
+            component={TelaEntrada}
+            options={{ title: "TelaEntrada" }}
+          />
           <Stack.Screen
             name="TelaListagemAgendamento"
             component={TelaListagemAgendamento}
             options={{ title: "Tela de Listagem de Agendamento" }}
           />
 
-          {/* TELA DE INICIO */}
           <Stack.Screen
             name="TelaPerfil"
             component={TelaPerfil}
@@ -80,11 +85,6 @@ export default function App() {
           />
 
           {/* TELA DE INICIO */}
-          <Stack.Screen
-            name="TelaEntrada"
-            component={TelaEntrada}
-            options={{ title: "TelaEntrada" }}
-          />
 
           <Stack.Screen
             name="TelaCriarConta"

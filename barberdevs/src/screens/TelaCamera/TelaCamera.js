@@ -21,7 +21,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 
 
-export const TelaCamera = ({ navigation, navigate }) => {
+export const TelaCamera = ({ navigation, navigate, route }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const cameraRef = useRef(null);
   const [openModal, setOpenModal] = useState(false);
@@ -29,6 +29,7 @@ export const TelaCamera = ({ navigation, navigate }) => {
   const [type, setType] = useState(CameraType.back);
   const [image, setImage] = useState(null);
   const [selectedImageUri, setSelectedImageUri] = useState(null);
+  
 
 
   useEffect(() => {
@@ -112,14 +113,12 @@ export const TelaCamera = ({ navigation, navigate }) => {
     } else {
       // Se a imagem não foi selecionada, selecione a imagem
       pickImage();
+      // navigateToProfileWithImage();
     }
   };
   const navigateToProfileWithImage = () => {
-    navigation.navigate("TelaPerfil", { photoUri: selectedImageUri });
+    navigation.navigate('TelaPerfil', { photoUri: selectedImageUri });
   };
-
-
-//arrumar que o Uri nao passa para a telaPefil
 
   return (
     <>

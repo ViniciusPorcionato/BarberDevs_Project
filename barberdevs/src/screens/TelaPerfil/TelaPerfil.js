@@ -20,14 +20,17 @@ export const TelaPerfil = ({navigation, route}) => {
     const [editing, setEditing] = useState(false)
     const [visible, setVisible] = useState(false)
     // const { photoUri } = route.params;
+    const [profileImageSource, setProfileImageSource] = useState(null);
 
  
 
   useEffect(() => {
-    route.params == undefined 
-    ?  require("./../../assets/img/image8.png")
-     : { uri: route.params.photoUri }
-  }, ) //[route.params.photoUri]
+    if (route.params?.photoUri) {
+      setProfileImageSource({ uri: route.params.photoUri });
+  } else {
+      setProfileImageSource(require('./../../assets/img/image8.png'));
+  }
+}, [route]); //[route.params.photoUri] 
     return (
       <ContainerPerfil>
           <MenuButton onPress={() => setVisible(true)}>
@@ -35,7 +38,7 @@ export const TelaPerfil = ({navigation, route}) => {
           </MenuButton>
 
       
-      {route.params ? <ImgPerfil source={{ uri: route.params.photoUri }} /> : <ImgPerfil source={require("./../../assets/img/image8.png")} />}
+          {profileImageSource && <ImgPerfil source={profileImageSource} />}
 
       <ButtoEnterCamera onPress={() => navigation.navigate(TelaCamera) }>
         {/* <IconBox */}
