@@ -76,7 +76,39 @@ export const TelaListagemAgendamento = ({ navigation }) => {
     // Adicione mais agendamentos conforme necessário
   ];
 
+
+  const [token, setToken] = useState({})
+  const [baseUser, setBaseUser] = useState({})
   const [visible, setVisible] = useState(false)
+
+
+
+  async function ProfileLoad() {
+    const tokenDecode = await userDecodeToken();
+    if (tokenDecode) {
+      await setToken(tokenDecode)
+      await BuscarUsuario(tokenDecode)
+    }
+  }
+
+  async function BuscarUsuario(tokenUser) {
+    console.log(tokenUser);
+    try {
+      const response = await api.get(`/Usuario/BuscarPorId?id=${tokenUser.jti}`);
+
+      setBaseUser(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  useEffect(() => {
+    ProfileLoad()
+  }, [])
+
+
+
   return (
     <ContainerAgendamento>
 

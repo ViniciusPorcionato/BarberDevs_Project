@@ -15,8 +15,8 @@ import { useState } from "react";
 
 export const Login = ({ navigation }) => {
 
-    const [email, setEmail] = useState("porcionatovinicius@gmail.com");
-  const [senha, setSenha] = useState("vini123");
+    const [email, setEmail] = useState("miguellamarca28@gmail.com");
+  const [senha, setSenha] = useState("123456");
   const [isLoaded, setIsLoaded] = useState(false);
 
 
@@ -29,7 +29,6 @@ async function Login() {
         senha: senha,
       })
       .then(async (response) => {
-        console.log(response.request);
 
         await AsyncStorage.setItem("token", JSON.stringify(response.data.token));
 
