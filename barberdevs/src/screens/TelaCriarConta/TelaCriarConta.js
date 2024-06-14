@@ -9,53 +9,45 @@ import { Logo_2 } from "../../components/logo/logo";
 import { AntDesign } from "@expo/vector-icons";
 import { TextButton, TextCop_Styled } from "../../components/text/text";
 import { useRef, useState } from "react";
-import api from "../../services/Service";
+import api from "../../Service/Service";
 
 export const CriarConta = ({ navigation }) => {
+
   const [inputs, setInputs] = useState({
-    nome: "",
-    email: "",
-    senha: "",
-    rg: "",
-    cpf: "",
-    confsenha: "",
+    nome: "Minas 02222",
+    email: "minas0222@gmail.com",
+    senha: "minas123"
   });
 
   const scrollViewRef = useRef(null);
 
   async function fillProfile() {
     if (Object.values(inputs).some((input) => input === "")) {
-      // scrollViewRef.current.scrollTo({ y: 0, animated: true });
-
+      scrollViewRef.current.scrollTo({ y: 0, animated: true });
+      console.log("deu ruim");
       return;
     }
 
     const formData = new FormData();
+    formData.append("Nome", inputs.nome);
+    formData.append("Email", inputs.email);
+    formData.append("Senha", inputs.senha);
+    // formData.append("confsenha", inputs.confsenha);
+    formData.append("IdTipoUsuario", "37838AD6-CFC2-44AB-B6FF-652B3A5087FA");
 
-    formData.append("nome", inputs.nome);
-    formData.append("email", inputs.email);
-    formData.append("senha", inputs.senha);
-    formData.append("confsenha", inputs.confsenha);
-    formData.append("rg", inputs.rg);
-    formData.append("cpf", inputs.cpf);
-    formData.append("idTipoUsuario", "37838AD6-CFC2-44AB-B6FF-652B3A5087FA")
-
-    console.log("teste321");
-    
+    console.log(formData);
     await api
       .post("/Cliente/CadastrarCliente", formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type" : "multipart/form-data"
         },
       })
-      .then((response) => {
-        console.log("teste");
+      .then(() => {
+        navigation.navigate("TelaLogin");
       })
       .catch((error) => {
         console.error(error);
-        console.log("teste12");
       });
-    navigation.navigate("TelaLogin");
   }
 
   return (
@@ -70,7 +62,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
-          inputValue={inputs.nome}
+          value={inputs.nome}
           placeholder={"Digite seu nome*"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, nome: text })}
@@ -79,7 +71,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
-          inputValue={inputs.email}
+          value={inputs.email}
           placeholder={"Digite seu Email*"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, email: text })}
@@ -88,7 +80,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
-          inputValue={inputs.senha}
+          value={inputs.senha}
           placeholder={"Digite sua senha"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, senha: text })}
@@ -97,7 +89,7 @@ export const CriarConta = ({ navigation }) => {
 
       <BoxInput>
         <InputLong
-          inputValue={inputs.confsenha}
+          value={inputs.confsenha}
           placeholder={"Cofirme a senha"}
           placeholderTextColor={"white"}
           onChangeText={(text) => setInputs({ ...inputs, confsenha: text })}

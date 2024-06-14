@@ -4,7 +4,14 @@ import {
   ContainerModalImage,
   ContentCamera,
 } from "../../components/Container/Container";
-import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useEffect, useRef, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import {
@@ -17,9 +24,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { TelaPerfil } from "../TelaPerfil/TelaPerfil";
-import * as ImagePicker from 'expo-image-picker';
-
-
+import * as ImagePicker from "expo-image-picker";
 
 export const TelaCamera = ({ navigation, navigate, route }) => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -29,8 +34,6 @@ export const TelaCamera = ({ navigation, navigate, route }) => {
   const [type, setType] = useState(CameraType.back);
   const [image, setImage] = useState(null);
   const [selectedImageUri, setSelectedImageUri] = useState(null);
-  
-
 
   useEffect(() => {
     (async () => {
@@ -38,6 +41,7 @@ export const TelaCamera = ({ navigation, navigate, route }) => {
       setHasPermission(status === "granted");
     })();
   }, []);
+
 
   if (hasPermission === null) {
     return (
@@ -75,10 +79,9 @@ export const TelaCamera = ({ navigation, navigate, route }) => {
   }
 
   async function UploadPhoto() {
-
     console.log(photo);
 
-    navigation.navigate("TelaPerfil", { photoUri: photo })
+    navigation.navigate("TelaPerfil", { photoUri: photo });
 
     // await MediaLibrary.createAssetAsync(photo).then(() => {
     //   alert('Foto salva com sucesso')
@@ -99,13 +102,12 @@ export const TelaCamera = ({ navigation, navigate, route }) => {
     console.log(result);
 
     if (!result.canceled) {
-      setSelectedImageUri(result.assets[0].uri);
-      navigateToProfileWithImage()
-
+      await setSelectedImageUri(result.assets[0].uri);
+      console.log(selectedImageUri);
+      // navigateToProfileWithImage()
     }
   };
 
-  
   const handleGalleryPress = () => {
     if (selectedImageUri) {
       // Se a imagem já foi selecionada, navegue para a TelaPerfil
@@ -117,26 +119,29 @@ export const TelaCamera = ({ navigation, navigate, route }) => {
     }
   };
   const navigateToProfileWithImage = () => {
-    navigation.navigate('TelaPerfil', { photoUri: selectedImageUri });
+    navigation.navigate("TelaPerfil", { photoUri: selectedImageUri });
   };
 
   return (
     <>
       {/* <ContainerCamera> */}
-      <Camera style={{ height: "100%", width: "100%" }} type={type} ref={cameraRef}>
+      <Camera
+        style={{ height: "100%", width: "100%" }}
+        type={type}
+        ref={cameraRef}
+      >
         <ButtonCloseCamera onPress={() => navigation.navigate(TelaPerfil)}>
           <AntDesign name="close" size={40} color="#FFB600" />
         </ButtonCloseCamera>
         <ContentCamera>
-
-          <ButtonGalery onPress={handleGalleryPress}>
-          {/* {image && <Image source={{ uri: image }} />} */}
+          {/* <ButtonGalery onPress={handleGalleryPress}>
+            {image && <Image source={{ uri: image }} />}
             <MaterialCommunityIcons
               name="camera-burst"
               size={40}
               color="#FFB600"
             />
-          </ButtonGalery>
+          </ButtonGalery> */}
 
           <ButtonPicture onPress={() => CapturePhoto()}>
             <FontAwesome name="camera" size={40} color="#FFB600" />
