@@ -27,18 +27,19 @@ export const TelaListagemAgendamento = ({ navigation }) => {
   const [profile, setProfile] = useState("");
   const [role, setRole] = useState("");
 
-  // const [tokenId ,setTokenId] = useState("")
-  // const[user, setUser] = useState({})
+  const [tokenId, setTokenId] = useState("");
+  const [user, setUser] = useState(null);
 
-  // async function BuscarUsuario() {
-  //   await api.get(`/Usuario/BuscarPorId?id=${tokenId}`)
-  //   .then( response => {
-  //     setUser(response.data)
-  //     console.log(response.data);
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   })
-  // }
+  async function BuscarUsuario(token) {    
+    await api
+      .get(`/Usuario/BuscarPorId?id=${token.jti}`)
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   async function ProfileLoad() {
     const token = await userDecodeToken();
@@ -46,16 +47,18 @@ export const TelaListagemAgendamento = ({ navigation }) => {
     if (token != null) {
       setProfile(token);
       setRole(token.role);
-      setTokenId(token.jti)
+      setTokenId(token.jti);
 
-      { role == "Cliente"
+      BuscarUsuario(token);
+
+      {
+        token.role == "Cliente"
           ? BuscarAgendamentoCliente(token)
           : BuscarAgendamentoBarbeiro(token);
       }
-    } 
+    }
   }
 
-  
   async function BuscarAgendamentoCliente(token) {
     await api
       .get(`/Agendamento/AgendamentosCliente`, {
@@ -64,10 +67,10 @@ export const TelaListagemAgendamento = ({ navigation }) => {
         },
       })
       .then((response) => {
-        console.log(response.request);
         setAgendamentosClientes(response.data);
       })
       .catch((error) => {
+        console.log("cliente");
         console.log(error);
       });
   }
@@ -83,95 +86,111 @@ export const TelaListagemAgendamento = ({ navigation }) => {
         setAgendamentosBarbeiros(response.data);
       })
       .catch((error) => {
+        console.log('barbeiro');
         console.log(error);
       });
   }
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);    
   const [visibleC, setVisibleC] = useState(false);
 
   useEffect(() => {
     ProfileLoad();
   }, []);
 
-  // useEffect(() => {
-  //   BuscarUsuario();
-  // }, []);
+  useEffect(() => {}, [agendamentosClientes]);
+  useEffect(() => {}, [agendamentosBarbeiros]);
 
-  //  useEffect(() => {}, [agendamentosClientes]);
-  // useEffect(() => {}, [agendamentosBarbeiros]);
- 
   return (
-    <ContainerAgendamento>
-      <MenuButton_Styled_Agendamentos onPress={() => setVisible(true)}>
-        <Ionicons name="menu-sharp" size={30} color="white" />
-      </MenuButton_Styled_Agendamentos>
+    <>
+      {user != null ? (
+        <>
+          <ContainerAgendamento>
+            <MenuButton_Styled_Agendamentos onPress={() => setVisible(true)}>
+              <Ionicons name="menu-sharp" size={30} color="white" />
+            </MenuButton_Styled_Agendamentos>
 
-      <HeaderPerfil 
-      // source={{uri: user.foto}}
-      // nameUser={user.name}
-      />
+            <HeaderPerfil source={{ uri: user.foto }} nameUser={user.nome} />
 
-      <TitleAgendamento>Seus agendamentos:</TitleAgendamento>
+            <TitleAgendamento>Seus agendamentos:</TitleAgendamento>
 
-      {role == "Cliente" ? (
-        <FlatList
-          data={agendamentosClientes}
-          renderItem={({ item }) => (
-            <ListaAgendados
-              nome={item.idBarbeiroNavigation.idBarbeiroNavigation.nome}
-              horaMarcada={moment(item.dataAgendamento).format(
-                "DD/MM/YYYY        HH:mm"
+            {role == "Cliente" ? (
+              <FlatList
+                data={agendamentosClientes}
+                renderItem={({ item }) => (
+                  <ListaAgendados
+                    nome={item.idBarbeiroNavigation.idBarbeiroNavigation.nome}
+                    horaMarcada={moment(item.dataAgendamento).format(
+                      "DD/MM/YYYY        HH:mm"
+                    )}
+                    source={{
+                      uri: item.idBarbeiroNavigation.idBarbeiroNavigation.foto,
+                    }}
+                    onPressCancel={() => {
+                      setVisibleC(true);
+                      setAgendamentoSelecionado(item.idAgendamento);
+                    }}
+                  />
+                )}
+                keyExtractor={(item) => item.id}
+              />
+            ) : (
+              <FlatList
+                data={agendamentosBarbeiros}
+                renderItem={({ item }) => (
+                  <ListaAgendados
+                    nome={item.idClienteNavigation.idClienteNavigation.nome}
+                    horaMarcada={moment(item.dataAgendamento).format(
+                      "DD/MM/YYYY        HH:mm"
+                    )}
+                    source={{
+                      uri: item.idClienteNavigation.idClienteNavigation.foto,
+                    }}
+                    onPressCancel={() => {
+                      setVisibleC(true);
+                      setAgendamentoSelecionado(item.idAgendamento);
+                    }}
+                  />
+                )}
+                keyExtractor={(item) => item.id}
+              />
+            )}
+
+            <ContainerFooter>
+              {role == "Cliente" ? (
+                <AgendarButton
+                  onPress={() => navigation.replace("TelaAgendamento")}
+                >
+                  <IconContainer>
+                    <FontAwesome6 name="scissors" size={24} color="black" />
+                  </IconContainer>
+                </AgendarButton>
+              ) : (
+                <></>
               )}
-              source={{
-                uri: item.idBarbeiroNavigation.idBarbeiroNavigation.foto}}
-              onPressCancel={() =>  {setVisibleC(true);
-              setAgendamentoSelecionado(item.idAgendamento)
-              }}/>
-          )}
-          keyExtractor={(item) => item.id}/>
-      ) : (
-        <FlatList
-          data={agendamentosBarbeiros}
-          renderItem={({ item }) => (
-            <ListaAgendados
-              nome={item.idClienteNavigation.idClienteNavigation.nome}
-              horaMarcada={moment(item.dataAgendamento).format(
-                "DD/MM/YYYY        HH:mm"
-              )}
-              source={{
-                uri: item.idClienteNavigation.idClienteNavigation.foto}}
-              onPressCancel={() => setVisibleC(true)}
+            </ContainerFooter>
+
+            <MenuHemburguer
+              visible={visible}
+              navigation={navigation}
+              setVisible={setVisible}
             />
-          )}
-          keyExtractor={(item) => item.id}
-        />
+            <CancelationModal
+              visible={visibleC}
+              setVisible={setVisibleC}
+              idAgendamento={agendamentoSelecionado}
+
+              reload={
+                role == "Cliente"
+                  ? BuscarAgendamentoCliente(profile)
+                  : BuscarAgendamentoBarbeiro(profile)
+              }
+            />
+          </ContainerAgendamento>
+        </>
+      ) : (
+        <></>
       )}
-
-      <ContainerFooter>
-
-        {role == "Cliente" ? (
-          <AgendarButton onPress={() => navigation.replace("TelaAgendamento")}>
-            <IconContainer>
-              <FontAwesome6 name="scissors" size={24} color="black" />
-            </IconContainer>
-          </AgendarButton>
-        ) : (
-          <></>
-        )}
-
-      </ContainerFooter>
-
-      <MenuHemburguer
-        visible={visible}
-        navigation={navigation}
-        setVisible={setVisible}
-      />
-      <CancelationModal
-        visible={visibleC}
-        setVisible={setVisibleC}
-        idAgendamento={agendamentoSelecionado}
-      />
-    </ContainerAgendamento>
+    </>
   );
 };

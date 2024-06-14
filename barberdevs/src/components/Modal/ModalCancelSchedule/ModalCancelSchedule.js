@@ -8,23 +8,19 @@ import { useEffect } from "react";
 import api from "../../../Service/Service";
 
 
-export const CancelationModal = ({ visible, setVisible, idAgendamento }) => {
+export const CancelationModal = ({ visible, setVisible, idAgendamento, reload }) => {
 
 
   async function CancelAgendamento() {
     await api.delete(`/Agendamento/DeletarAgendamento?id=${idAgendamento}`)
     .then(() => {
-      console.log("Deu bom !");
       setVisible(false)
+      reload()
     }).catch((error) => {
       console.log(error);
     })
   }
 
-useEffect(() => {
-    console.log("id");
-    console.log(idAgendamento);
-}, [])
   return (
     <Modal
       visible={visible}

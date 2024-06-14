@@ -92,6 +92,11 @@ export const ItemBox = styled.View`
   gap: 5px;
 `;
 
+export const ItemBoxButton = styled.TouchableOpacity`
+  width: 53px;
+  gap: 5px;
+`;
+
 export const CardHorario = styled.TouchableOpacity`
   width: 53px;
   height: 35px;

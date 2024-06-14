@@ -69,8 +69,6 @@ export const TelaCamera = ({ navigation, navigate }) => {
 
   async function UploadPhoto() {
 
-    console.log(photo);
-
     navigation.navigate("TelaPerfil", { photoUri: photo })
 
     // await MediaLibrary.createAssetAsync(photo).then(() => {

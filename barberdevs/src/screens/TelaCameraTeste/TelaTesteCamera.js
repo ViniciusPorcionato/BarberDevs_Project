@@ -21,8 +21,6 @@
 
 //       setPhoto(photo.uri)
 //       setOpenModal(true)
-
-//       console.log(photo)
 //     }
 //   }
 
