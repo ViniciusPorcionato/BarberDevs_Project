@@ -21,6 +21,7 @@ export const TelaListagemAgendamento = ({ navigation }) => {
 
   const [profile, setProfile] = useState("");
   const [role, setRole] = useState("");
+  const [visible, setVisible] = useState(false)
 
   async function ProfileLoad() {
     const token = await userDecodeToken();
@@ -28,7 +29,6 @@ export const TelaListagemAgendamento = ({ navigation }) => {
     if (token != null) {
       setProfile(token);
       setRole(token.role);
-
       BuscarAgendamentoCliente(token)
     }
   }
@@ -49,9 +49,6 @@ export const TelaListagemAgendamento = ({ navigation }) => {
       });
   }
 
-
-  const [visible, setVisible] = useState(false);
-
   useEffect(() => {
     ProfileLoad();
   }, []);
@@ -59,6 +56,11 @@ export const TelaListagemAgendamento = ({ navigation }) => {
 
   useEffect(() => {
   }, [agendamentosClientes]);
+
+  useEffect(() => {
+    ProfileLoad()
+  }, [])
+
 
   return (
     <ContainerAgendamento>

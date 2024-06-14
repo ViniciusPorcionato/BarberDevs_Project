@@ -93,6 +93,7 @@ export const TextCop_Styled_Perfil = styled(TextCop)`
 `
 
 export const TextCop_Styled_Menu = styled(TextCop)`
+
   top: 14%;
   left: 10%;
 `

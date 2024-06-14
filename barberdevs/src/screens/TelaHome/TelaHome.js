@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { BarbeirosContainer, ContainerHome, ItemBox, HomeBox, ImgBox, Item, ContainerItems, Container, HeaderHome } from "../../components/Container/Container"
 import { HeaderPerfil } from "../../components/HeaderPerfil/HeaderPerfil"
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer"
@@ -10,16 +10,32 @@ import { Ionicons } from '@expo/vector-icons';
 
 export const TelaHome = ({ navigation, route }) => {
     const [visible, setVisible] = useState(false)
+    const [token, setToken] = useState({})
+    const [baseUser, setBaseUser] = useState({})
 
-    // const TeladosPrc = useRef(null);
-    // const scrollToY = route.params.scrollToY;
+    async function ProfileLoad() {
+        const tokenDecode = await userDecodeToken();
+        if (tokenDecode) {
+            await setToken(tokenDecode)
+            await BuscarUsuario(tokenDecode)
+        }
+    }
 
-    // useState(() => {
-    //     console.log(TeladosPrc);
-    //     if (TeladosPrc.current && scrollToY) {
-    //         TeladosPrc.current.scrollTo({ y: scrollToY, animated: true });
-    //     }
-    // }, [TeladosPrc, scrollToY])
+    async function BuscarUsuario(tokenUser) {
+        console.log(tokenUser);
+        try {
+            const response = await api.get(`/Usuario/BuscarPorId?id=${tokenUser.jti}`);
+
+            setBaseUser(response.data)
+            console.log(baseUser);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        ProfileLoad()
+    }, [])
     return (
         <ContainerHome>
             <Container>
@@ -67,7 +83,7 @@ export const TelaHome = ({ navigation, route }) => {
                     <ContainerItems>
                         <Item>
                             <ImgBox>
-                                <IconImg source={require("./../../assets/img/Cabelo.svg")} />
+                                <IconImg source={require("./../../assets/img/image17hair.png")} />
                             </ImgBox>
 
                             <ItemText>Cabelo</ItemText>
@@ -76,7 +92,7 @@ export const TelaHome = ({ navigation, route }) => {
 
                         <Item>
                             <ImgBox>
-                                <IconImg source={require("./../../assets/img/Barba.svg")} />
+                                <IconImg source={require("./../../assets/img/image18beard.png")} />
                             </ImgBox>
 
                             <ItemText>Barba</ItemText>
@@ -85,7 +101,7 @@ export const TelaHome = ({ navigation, route }) => {
 
                         <Item>
                             <ImgBox>
-                                <IconImg source={require("./../../assets/img/Olho.svg")} />
+                                <IconImg source={require("./../../assets/img/eyebrow1eyebrown.png")} />
                             </ImgBox>
 
                             <ItemText>Sobrancelha</ItemText>
