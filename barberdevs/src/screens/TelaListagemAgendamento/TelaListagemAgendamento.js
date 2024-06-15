@@ -14,7 +14,7 @@ import { AgendarButton } from "../../components/button/button";
 import { useState, useEffect } from "react";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer";
 import api from "../../Service/Service";
-import { userDecodeToken } from "../../utils/Auth";
+import { userDecodeToken } from "../../Utils/Auth";
 
 export const TelaListagemAgendamento = ({ navigation }) => {
   const [agendamentosClientes, setAgendamentosClientes] = useState();

@@ -50,6 +50,11 @@ export default function App() {
       <StatusBar barStyle={"light-content"} />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="TelaHome"
+            component={TelaHome}
+            options={{ title: "Tela da Home" }}
+          />
           {/* TELA DE INICIO */}
           <Stack.Screen
             name="TelaPerfil"
@@ -60,7 +65,7 @@ export default function App() {
             name="TelaEntrada"
             component={TelaEntrada}
             options={{ title: "TelaEntrada" }}
-            />
+          />
 
           <Stack.Screen
             name="TelaLogin"
@@ -78,11 +83,7 @@ export default function App() {
             component={TelaCamera}
             options={{ title: "Tela da Camera" }}
           />
-          <Stack.Screen
-            name="TelaHome"
-            component={TelaHome}
-            options={{ title: "Tela da Home" }}
-          />
+
           <Stack.Screen
             name="TelaLocalizacao"
             component={TelaLocalizacao}

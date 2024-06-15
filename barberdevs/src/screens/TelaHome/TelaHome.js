@@ -7,11 +7,32 @@ import { IconImg, ImgBarbeiro, ImgHome } from "../../components/logo/logo"
 import { ItemPrice, ItemText, NomeBarbeiro, SobreNosText, TextButton, TextCop_Styled_Home } from "../../components/text/text"
 import { Title_Home } from "../../components/tittle/tittle"
 import { Ionicons } from '@expo/vector-icons';
+import Carousel from "react-native-snap-carousel"
+import { FotoHome } from "../../components/FotoHome/FotoHome"
 
 export const TelaHome = ({ navigation, route }) => {
     const [visible, setVisible] = useState(false)
     const [token, setToken] = useState({})
     const [baseUser, setBaseUser] = useState({})
+
+    const FotosCortes = [
+        {
+            title:"foto1",
+            image: "./../../assets/img/img-carousel-2.jpg"
+        }, 
+        {
+            title:"foto2",
+            image: "./../../assets/img/img-carousel-3.jpg"
+        }, 
+        {
+            title:"foto3",
+            image: "./../../assets/img/img-carousel-4.jpg"
+        }, 
+        {
+            title:"foto4",
+            image: "./../../assets/img/img-carousel-5.jpg"
+        }, 
+    ]
 
     async function ProfileLoad() {
         const tokenDecode = await userDecodeToken();
@@ -50,7 +71,14 @@ export const TelaHome = ({ navigation, route }) => {
                 <HomeBox>
                     <Title_Home>Tendências:</Title_Home>
 
-                    {/* carrosel */}
+                    <Carousel
+                        data={FotosCortes}
+                        layout="tinder"
+                        layoutCardOffset={0}
+                        renderItem={({item}) => <FotoHome imgLocal={item.image}/>}
+                        sliderWidth={320}
+                        sliderHeight={130}
+                    />
                 </HomeBox>
 
                 <HomeBox>

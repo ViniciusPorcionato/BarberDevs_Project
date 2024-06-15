@@ -271,3 +271,10 @@ export const HeaderHome = styled.View`
   justify-content: space-between;
   margin-bottom: 32px;
 `
+
+export const ContainerFoto = styled.View`
+  width: 320px;
+  height: 130px;
+  background-color: transparent;
+  overflow: hidden;
+`

@@ -57,3 +57,9 @@ export const ImgHome = styled.Image`
     height: 200px;
     margin-bottom: 22px;
 `
+
+export const ImgCarousel = styled.Image`
+    width: 100%;
+    height: 100%;
+    
+`
