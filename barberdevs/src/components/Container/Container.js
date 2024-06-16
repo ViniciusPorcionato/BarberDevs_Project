@@ -88,9 +88,25 @@ export const BarbeirosContainer = styled.View`
 `;
 
 export const ItemBox = styled.View`
-  width: 53px;
+  /* width: 53px; */
+  width: 100%;
   gap: 5px;
+  background-color: red;
 `;
+
+export const ViewFlat = styled.View`
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: blue; */
+  gap: 5px;
+  padding: 10px;
+`;
+
+export const ViewFlatAgendamento = styled.TouchableOpacity`
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+`
 
 export const ItemBoxButton = styled.TouchableOpacity`
   width: 53px;
@@ -277,9 +293,9 @@ export const ModalViewCancell = styled(MenuModalView)`
   border-radius: 10px 10px 0px 0px;
   border-right-width: 0px;
   border-top-width: 1px;
-  border-top-color:#ffb600 ; 
+  border-top-color: #ffb600;
   padding-top: 0px;
   align-items: center;
-  justify-content:center;
-  padding: 10px
+  justify-content: center;
+  padding: 10px;
 `;

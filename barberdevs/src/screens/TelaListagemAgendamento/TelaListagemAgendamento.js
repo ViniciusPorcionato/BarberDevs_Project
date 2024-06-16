@@ -26,7 +26,6 @@ export const TelaListagemAgendamento = ({ navigation }) => {
 
   const [profile, setProfile] = useState("");
   const [role, setRole] = useState("");
-
   const [tokenId, setTokenId] = useState("");
   const [user, setUser] = useState(null);
 
@@ -110,7 +109,7 @@ export const TelaListagemAgendamento = ({ navigation }) => {
               <Ionicons name="menu-sharp" size={30} color="white" />
             </MenuButton_Styled_Agendamentos>
 
-            <HeaderPerfil source={{ uri: user.foto }} nameUser={user.nome} />
+            <HeaderPerfil source={user.foto} nameUser={user.nome} />
 
             <TitleAgendamento>Seus agendamentos:</TitleAgendamento>
 
@@ -174,6 +173,7 @@ export const TelaListagemAgendamento = ({ navigation }) => {
               visible={visible}
               navigation={navigation}
               setVisible={setVisible}
+              user={user}
             />
             <CancelationModal
               visible={visibleC}

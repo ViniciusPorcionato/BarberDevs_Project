@@ -6,7 +6,7 @@ import { ImgModal } from "../logo/logo"
 import { Ionicons } from '@expo/vector-icons';
 import { EvilIcons } from "@expo/vector-icons";
 
-export const MenuHemburguer = ({ navigation, visible, setVisible }) => {
+export const MenuHemburguer = ({ navigation, visible, setVisible, user }) => {
 
     return (
         <Modal
@@ -23,9 +23,9 @@ export const MenuHemburguer = ({ navigation, visible, setVisible }) => {
                     </CloseButton>
 
                     <ModalHeader>
-                        <ImgModal source={require("./../../assets/img/image8.png")} />
+                        <ImgModal source={{uri: user.foto}} />
                         <NomeModal>
-                            Adalberto
+                            {user.nome}
                         </NomeModal>
                     </ModalHeader>
 

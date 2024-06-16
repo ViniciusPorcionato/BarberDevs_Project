@@ -15,8 +15,8 @@ import { useState } from "react";
 
 export const Login = ({ navigation }) => {
 
-  const [email, setEmail] = useState("porcionatovinicius@gmail.com");
-  const [senha, setSenha] = useState("vini123");
+  const [email, setEmail] = useState("cliente@gmail.com");
+  const [senha, setSenha] = useState("Senai@134");
   const [isLoaded, setIsLoaded] = useState(false);
 
   async function Login() {

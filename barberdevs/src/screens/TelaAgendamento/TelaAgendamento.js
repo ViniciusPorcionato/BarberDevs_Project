@@ -1,4 +1,4 @@
-import { Alert, FlatList, StyleSheet } from "react-native";
+import { Alert, FlatList, StyleSheet, Text } from "react-native";
 import { StyledCalendarStrip } from "../../components/calendario/calendario";
 import moment from "moment";
 import {
@@ -8,6 +8,8 @@ import {
   ItemBox,
   ItemBoxButton,
   Line_Agendamento,
+  ViewFlat,
+  ViewFlatAgendamento,
 } from "../../components/Container/Container";
 import { Title_Agendar } from "../../components/tittle/tittle";
 import { ImgBarbeiro } from "../../components/logo/logo";
@@ -28,15 +30,34 @@ export const TelaAgendamento = ({ navigation }) => {
   const [user, setUser] = useState(null);
 
   const [tokenId, setTokenId] = useState("");
-  const [idBarbeiro, setIdBarbeiro] = useState("");
-  const [dataSelecionada, setDataSelecionada] = useState(null);
-  const [horaSelecionada, setHoraSelecionada] = useState(null);
+  const [idBarbeiro, setIdBarbeiro] = useState(null);
+  const [barbeiroClicado, setBarbeiroClicado] = useState(false);
+  const [dataSelecionada, setDataSelecionada] = useState("");
+  const [horaSelecionada, setHoraSelecionada] = useState("");
+  const [selectedDate, setSelectedDate] = useState(
+    moment().format("YYYY-MM-DD")
+  );
 
   const [barbeiros, setBarbeiros] = useState([]);
 
   const barbeiroSelecionado = (id) => {
-    setIdBarbeiro(id);
+    setIdBarbeiro(id === idBarbeiro ? null : id);
+    console.log(idBarbeiro);
   };
+
+  const handleDayClick = (date) => {
+    setDataSelecionada(date); // Atualiza o estado com a data selecionada
+    console.log(dataSelecionada);
+  };
+
+  //validacao caso o cliente n escolher um profissional a pagina nao prossegue para agendar corte
+  // const verificarSelecao = () => {
+  //   if (!barbeiroClicado) {
+  //     alert('Por favor, selecione uma opção antes de prosseguir.');
+  //     return false;
+  //   }
+  //   return true;
+  // };
 
   useEffect(() => {
     BuscarBarbeiros();
@@ -51,6 +72,7 @@ export const TelaAgendamento = ({ navigation }) => {
       .get(`/Barbeiro/BuscarTodos`)
       .then((response) => {
         setBarbeiros(response.data);
+        console.log(barbeiros);
       })
       .catch((error) => console.log(error));
   }
@@ -70,7 +92,7 @@ export const TelaAgendamento = ({ navigation }) => {
       .post(`/Agendamento/CadastrarAgendamento`, {
         idBarbeiro: idBarbeiro,
         idCliente: tokenId,
-        dataAgendamento: `${dataSelecionada}${horaSelecionada}`,
+        dataAgendamento: `${dataSelecionada}${HoraMarcada}`,
       })
       .then((response) => {
         console.log(response.data);
@@ -179,6 +201,7 @@ export const TelaAgendamento = ({ navigation }) => {
         iconContainer={{ flex: 0.1 }}
         //scroll da barra
         scrollable={true}
+        onDateSelected={handleDayClick}
       />
 
       <Line_Agendamento />
@@ -186,57 +209,29 @@ export const TelaAgendamento = ({ navigation }) => {
       <Title_Agendar>Selecione o profissional</Title_Agendar>
 
       <BarbeirosContainer>
-        <ItemBoxButton onPress={barbeiroSelecionado}>
-
-
         <FlatList
-                data={barbeiros}
-                horizontal={true}
-                renderItem={({ item }) => (
-                  <ListaAgendados
-                    nome={item.idBarbeiroNavigation.idBarbeiroNavigation.nome}
-                    horaMarcada={moment(item.dataAgendamento).format(
-                      "DD/MM/YYYY        HH:mm"
-                    )}
-                    source={{
-                      uri: item.idBarbeiroNavigation.idBarbeiroNavigation.foto,
-                    }}
-                    onPressCancel={() => {
-                      setVisibleC(true);
-                      setAgendamentoSelecionado(item.idAgendamento);
-                    }}
-                  />
-                )}
-                keyExtractor={(item) => item.id}
+          data={barbeiros}
+          horizontal={true}
+          renderItem={({ item }) => (
+            <ViewFlatAgendamento
+              onPress={() => {
+                barbeiroSelecionado(
+                  item.id
+                ); /*, verificarSelecao() }} disabled={!barbeiroClicado*/
+              }}
+              isSelected={item.id === idBarbeiro && barbeiroClicado}
+            >
+              <ImgBarbeiro source={{ uri: item.idBarbeiroNavigation.foto }} />
+              <NomeBarbeiro
+                isSelected={item.id === idBarbeiro && barbeiroClicado}
+              >
+                {item.idBarbeiroNavigation.nome}
+              </NomeBarbeiro>
+            </ViewFlatAgendamento>
+          )}
+          keyExtractor={(item) => item.id}
+          showsHorizontalScrollIndicator={false}
         />
-                
-
-
-        //   {barbeiros.map((item) => {
-        //     return (
-        //       <>
-        //         <ImgBarbeiro
-        //           source={{ uri: item.idBarbeiroNavigation.foto }}
-        //         />
-        //         <NomeBarbeiro>
-        //           {item.idBarbeiroNavigation.nome}
-        //         </NomeBarbeiro>
-        //       </>
-        //     );
-        //   })}
-        </ItemBoxButton>
-        {/* <ItemBoxButton onPress={barbeiroSelecionado}>
-          <ImgBarbeiro source={require("./../../assets/img/image4.png")} />
-          <NomeBarbeiro>Roberto</NomeBarbeiro>
-        </ItemBoxButton>
-        <ItemBoxButton onPress={barbeiroSelecionado}>
-          <ImgBarbeiro source={require("./../../assets/img/image4.png")} />
-          <NomeBarbeiro>Roberto</NomeBarbeiro>
-        </ItemBoxButton>
-        <ItemBoxButton onPress={barbeiroSelecionado}>
-          <ImgBarbeiro source={require("./../../assets/img/image4.png")} />
-          <NomeBarbeiro>Roberto</NomeBarbeiro>
-        </ItemBoxButton> */}
       </BarbeirosContainer>
 
       <Line_Agendamento />
@@ -260,7 +255,7 @@ export const TelaAgendamento = ({ navigation }) => {
         />
       </CardsConatiner>
 
-      <ButtonLogin onPress={() => alert("Continuando")}>
+      <ButtonLogin onPress={() => CadastrarAgendamento()}>
         <TextButton>Confirmar</TextButton>
       </ButtonLogin>
 
@@ -280,6 +275,10 @@ export const TelaAgendamento = ({ navigation }) => {
 const styles = StyleSheet.create({
   iconsStyle: {
     display: "none",
+  },
+  barbeiroSelecionado: {
+    backgroundColor: "#DAA520",
+    // borderRadius: 10
   },
   calendarHeaderStyle: {
     fontSize: 25,
