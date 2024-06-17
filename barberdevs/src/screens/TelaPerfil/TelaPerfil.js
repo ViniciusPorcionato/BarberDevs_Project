@@ -21,6 +21,7 @@ import api from "../../Service/Service";
 import { userDecodeToken } from "../../utils/Auth";
 
 export const TelaPerfil = ({ navigation, route }) => {
+  
   const [editing, setEditing] = useState(false);
   const [visible, setVisible] = useState(false);
   const [nome, setNome] = useState("");
@@ -35,8 +36,7 @@ export const TelaPerfil = ({ navigation, route }) => {
   async function UpdateFunction() {
     setEditing(!editing);
 
-    await api
-      .put(`/Cliente/AtualizarCliente?id=${token.jti}`, {
+    await api.put(`/Cliente/AtualizarCliente?id=${token.jti}`, {
         nome: nome,
         email: email,
         rg: rg,
@@ -66,6 +66,32 @@ export const TelaPerfil = ({ navigation, route }) => {
       );
 
       setBaseUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function AlterarFotoPerfil() {
+    //INICIA LOADING
+    const formData = new FormData();
+
+    formData.append("Arquivo", {
+      name: `image.${photo.split(".")[1]}`,
+      type: `image/${photo.split(".")[1]}`,
+      uri: photo,
+    });
+
+    try {
+      await api.put(`/Usuario/AlterarFotoPerfil?id=${user.id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      //ATUALIZA O PERFIL
+      ProfileLoad();
+      //ESVAZIA O STATE DA FOTO
+      setPhoto(null);
     } catch (error) {
       console.log(error);
     }

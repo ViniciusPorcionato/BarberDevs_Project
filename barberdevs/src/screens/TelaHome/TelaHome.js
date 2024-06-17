@@ -7,6 +7,7 @@ import { IconImg, ImgBarbeiro, ImgHome } from "../../components/logo/logo"
 import { ItemPrice, ItemText, NomeBarbeiro, SobreNosText, TextButton, TextCop_Styled_Home } from "../../components/text/text"
 import { Title_Home } from "../../components/tittle/tittle"
 import { Ionicons } from '@expo/vector-icons';
+import SwiperComponent from "../../components/Carrosel/Carrosel"
 
 export const TelaHome = ({ navigation, route }) => {
     const [visible, setVisible] = useState(false)
@@ -49,7 +50,7 @@ export const TelaHome = ({ navigation, route }) => {
 
                 <HomeBox>
                     <Title_Home>Tendências:</Title_Home>
-
+        <SwiperComponent/>
                     {/* carrosel */}
                 </HomeBox>
 
