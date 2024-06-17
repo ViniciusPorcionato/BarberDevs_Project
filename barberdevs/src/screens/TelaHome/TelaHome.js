@@ -7,8 +7,7 @@ import { IconImg, ImgBarbeiro, ImgHome } from "../../components/logo/logo"
 import { ItemPrice, ItemText, NomeBarbeiro, SobreNosText, TextButton, TextCop_Styled_Home } from "../../components/text/text"
 import { Title_Home } from "../../components/tittle/tittle"
 import { Ionicons } from '@expo/vector-icons';
-import { FotoHome } from "../../components/FotoHome/FotoHome"
-import Carousel from "react-native-snap-carousel"
+import SwiperComponent from "../../components/Carrosel/Carrosel"
 
 export const TelaHome = ({ navigation, route }) => {
     const [visible, setVisible] = useState(false)
@@ -17,21 +16,21 @@ export const TelaHome = ({ navigation, route }) => {
 
     const FotosCortes = [
         {
-            title:"foto1",
+            title: "foto1",
             image: "./../../assets/img/img-carousel-2.jpg"
-        }, 
+        },
         {
-            title:"foto2",
+            title: "foto2",
             image: "./../../assets/img/img-carousel-3.jpg"
-        }, 
+        },
         {
-            title:"foto3",
+            title: "foto3",
             image: "./../../assets/img/img-carousel-4.jpg"
-        }, 
+        },
         {
-            title:"foto4",
+            title: "foto4",
             image: "./../../assets/img/img-carousel-5.jpg"
-        }, 
+        },
     ]
 
     async function ProfileLoad() {
@@ -70,6 +69,7 @@ export const TelaHome = ({ navigation, route }) => {
 
                 <HomeBox>
                     <Title_Home>Tendências:</Title_Home>
+                    <SwiperComponent />
                 </HomeBox>
 
                 <HomeBox>
