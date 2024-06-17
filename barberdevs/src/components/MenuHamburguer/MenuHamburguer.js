@@ -8,7 +8,7 @@ import { EvilIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react"
 import api from "../../Service/Service"
-import { userDecodeToken } from "../../Utils/Auth"
+// import { userDecodeToken } from "../../Utils/Auth"
 
 export const MenuHemburguer = ({ navigation, visible, setVisible }) => {
     const [token, setToken] = useState({})
@@ -20,7 +20,7 @@ export const MenuHemburguer = ({ navigation, visible, setVisible }) => {
     }
 
     async function ProfileLoad() {
-        const tokenDecode = await userDecodeToken ();
+        // const tokenDecode = await userDecodeToken ();'
         if (tokenDecode) {
             await setToken(tokenDecode)
             await BuscarUsuario(tokenDecode)

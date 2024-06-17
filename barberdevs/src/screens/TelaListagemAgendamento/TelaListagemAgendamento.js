@@ -14,7 +14,7 @@ import { AgendarButton } from "../../components/button/button";
 import { useState, useEffect } from "react";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer";
 import api from "../../Service/Service";
-import { userDecodeToken } from "../../Utils/Auth";
+// import { userDecodeToken } from "../../Utils/Auth";
 
 export const TelaListagemAgendamento = ({ navigation }) => {
   const [agendamentosClientes, setAgendamentosClientes] = useState();
@@ -24,7 +24,7 @@ export const TelaListagemAgendamento = ({ navigation }) => {
   const [visible, setVisible] = useState(false)
 
   async function ProfileLoad() {
-    const token = await userDecodeToken();
+    // const token = await userDecodeToken();
 
     if (token != null) {
       setProfile(token);

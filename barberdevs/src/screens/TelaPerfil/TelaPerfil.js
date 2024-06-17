@@ -18,7 +18,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { TelaCamera } from "../TelaCamera/TelaCamera";
 import { MenuHemburguer } from "../../components/MenuHamburguer/MenuHamburguer";
 import api from "../../Service/Service";
-import { userDecodeToken } from "../../Utils/Auth";
+// import { userDecodeToken } from "../../Utils/Auth";
 
 export const TelaPerfil = ({ navigation, route }) => {
   const [editing, setEditing] = useState(false);
@@ -51,7 +51,7 @@ export const TelaPerfil = ({ navigation, route }) => {
   }
 
   async function ProfileLoad() {
-    const tokenDecode = await userDecodeToken();
+    // const tokenDecode = await userDecodeToken();
     if (tokenDecode) {
       await setToken(tokenDecode);
       await BuscarUsuario(tokenDecode);
