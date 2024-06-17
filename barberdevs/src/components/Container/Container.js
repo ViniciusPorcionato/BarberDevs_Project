@@ -88,25 +88,42 @@ export const BarbeirosContainer = styled.View`
 `;
 
 export const ItemBox = styled.View`
+  /* width: 53px; */
+  width: 100%;
+  gap: 5px;
+  background-color: red;
+`;
+
+export const ViewFlat = styled.View`
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: blue; */
+  gap: 5px;
+  padding: 10px;
+`;
+
+export const ViewFlatAgendamento = styled.TouchableOpacity`
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+`
+
+export const ItemBoxButton = styled.TouchableOpacity`
   width: 53px;
   gap: 5px;
 `;
 
 export const CardHorario = styled.TouchableOpacity`
- width: 53px;
-   height: 35px;
-   border: 0.5px solid #FFB600;
-   align-items: center;
-   justify-content: center;
-   margin-top: 25px; 
-   border-radius:5px;
-   margin-right: 10px;
- 
+  width: 53px;
+  height: 35px;
+  border: 0.5px solid #ffb600;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  border-radius: 5px;
+  margin-right: 10px;
 
   ${(props) =>
-
-
-  
     props.clickButton
       ? css`
           background-color: #ffb600;
@@ -186,7 +203,6 @@ export const ContainerMapNum = styled(ContainerMapRua)``;
 
 export const ContainerMapBairro = styled(ContainerMapRua)``;
 
-
 export const ContainerCamera = styled.View`
   /* width: 90%; */
   /* flex-direction: row;
@@ -194,26 +210,24 @@ export const ContainerCamera = styled.View`
   /* padding-left: 60px; */
 `;
 
-export const ContainerModalImage = styled.View`
-`
+export const ContainerModalImage = styled.View``;
 
 export const ContainerHome = styled.ScrollView`
-flex: 1;
-background-color: #272727;
-gap: 30px;
-
-`
+  flex: 1;
+  background-color: #272727;
+  gap: 30px;
+`;
 
 export const ContainerPerfil = styled(Container)`
   background-color: #272727;
-`
+`;
 
 export const MenuModal = styled.View`
   flex: 1;
   align-items: center;
   justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.60);
-`
+  background-color: rgba(0, 0, 0, 0.6);
+`;
 
 export const MenuModalView = styled.View`
   height: 100%;
@@ -222,9 +236,9 @@ export const MenuModalView = styled.View`
   align-self: flex-start;
   padding-top: 55px;
   border-radius: 0px 10px 10px 0px;
-  border-right-width: 1px ;
-  border-right-color: #FFB600;
-`
+  border-right-width: 1px;
+  border-right-color: #ffb600;
+`;
 
 export const ModalHeader = styled.View`
   flex-direction: row;
@@ -232,39 +246,39 @@ export const ModalHeader = styled.View`
   margin-bottom: 100px;
   margin-left: 33px;
   align-items: center;
-`
+`;
 
 export const Nav = styled.View`
   gap: 40px;
   flex-direction: column;
   justify-content: space-between;
-`
+`;
 
 export const HomeBox = styled.View`
   width: 90%;
   margin-bottom: 30px;
   align-items: center;
-`
+`;
 
 export const ContainerItems = styled.View`
   width: 100%;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-`
+`;
 export const Item = styled.View`
   align-items: center;
   gap: 6px;
-`
+`;
 
 export const ImgBox = styled.View`
   width: 50px;
   height: 50px;
   align-items: center;
   justify-content: center;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   border-radius: 10px;
-`
+`;
 
 export const HeaderHome = styled.View`
   width: 90%;
@@ -278,3 +292,17 @@ export const ContainerFoto = styled.View`
   background-color: transparent;
   overflow: hidden;
 `
+
+export const ModalViewCancell = styled(MenuModalView)`
+  height: 350px;
+  width: 100%;
+  align-self: flex-start;
+  border-radius: 10px 10px 0px 0px;
+  border-right-width: 0px;
+  border-top-width: 1px;
+  border-top-color: #ffb600;
+  padding-top: 0px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+`;

@@ -68,7 +68,7 @@ export const HoraMarcada = styled(Nome)``;
 export const NomeBarbeiro = styled.Text`
     font-size: 14px;
     font-family: "";
-    color: #FFFFFF;
+    color: ${(props) => (props.isSelected? "#FFFFFF" : "#DAA520")};
 `
 
 export const TextoHora = styled(Text)`
@@ -126,5 +126,11 @@ export const ItemPrice = styled(ItemText)`
 
 export const SobreNosText = styled(ItemText)`
   font-size: 12px;
+  text-align: center;
+`
+
+export const InfoCancell = styled.Text`
+  font-size:18px;
+  color: #FFFFFF;
   text-align: center;
 `

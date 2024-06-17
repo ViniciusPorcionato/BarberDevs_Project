@@ -5,42 +5,8 @@ import { LinkText, NomeModal, TextCop_Styled_Menu } from "../text/text"
 import { ImgModal } from "../logo/logo"
 import { Ionicons } from '@expo/vector-icons';
 import { EvilIcons } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react"
-import api from "../../Service/Service"
-import { userDecodeToken } from "../../Utils/Auth"
 
-export const MenuHemburguer = ({ navigation, visible, setVisible }) => {
-    const [token, setToken] = useState({})
-    const [baseUser, setBaseUser] = useState({})
- 
-    async function LogOutFunction() {
-        await AsyncStorage.removeItem("token");
-        navigation.replace("TelaEntrada")
-    }
-
-    async function ProfileLoad() {
-        const tokenDecode = await userDecodeToken ();
-        if (tokenDecode) {
-            await setToken(tokenDecode)
-            await BuscarUsuario(tokenDecode)
-        }
-    }
-
-    async function BuscarUsuario(tokenUser) {
-        console.log(tokenUser);
-        try {
-            const response = await api.get(`/Usuario/BuscarPorId?id=${tokenUser.jti}`);
-
-            setBaseUser(response.data)
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        ProfileLoad()
-    }, [])
+export const MenuHemburguer = ({ navigation, visible, setVisible, user }) => {
 
     return (
         <Modal
@@ -57,9 +23,9 @@ export const MenuHemburguer = ({ navigation, visible, setVisible }) => {
                     </CloseButton>
 
                     <ModalHeader>
-                        <ImgModal source={require("./../../assets/img/image8.png")} />
+                        <ImgModal source={{uri: user.foto}} />
                         <NomeModal>
-                            Adalberto
+                            {user.nome}
                         </NomeModal>
                     </ModalHeader>
 
