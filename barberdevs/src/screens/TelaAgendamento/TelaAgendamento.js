@@ -23,20 +23,23 @@ import { ButtonLogin } from "../../components/button/button";
 import { TextLinkStyled } from "../../components/link/link";
 import { HoraButton } from "../../components/CardHora/CardHora";
 import api from "../../Service/Service";
+import { userDecodeToken } from "../../Utils/Auth";
 
 export const TelaAgendamento = ({ navigation }) => {
   const [profile, setProfile] = useState("");
   const [role, setRole] = useState("");
+  const [tokenId, setTokenId] = useState("");
   const [user, setUser] = useState(null);
 
-  const [tokenId, setTokenId] = useState("");
+
+
   const [idBarbeiro, setIdBarbeiro] = useState(null);
+
   const [barbeiroClicado, setBarbeiroClicado] = useState(false);
-  const [dataSelecionada, setDataSelecionada] = useState("");
-  const [horaSelecionada, setHoraSelecionada] = useState("");
-  const [selectedDate, setSelectedDate] = useState(
-    moment().format("YYYY-MM-DD")
-  );
+
+  const [dataSelecionada, setDataSelecionada] = useState(moment().format("YYYY-MM-DD"));
+  const [horaMarcada, setHoraMarcada] = useState("");
+
 
   const [barbeiros, setBarbeiros] = useState([]);
 
@@ -46,9 +49,28 @@ export const TelaAgendamento = ({ navigation }) => {
   };
 
   const handleDayClick = (date) => {
-    setDataSelecionada(date); // Atualiza o estado com a data selecionada
-    console.log(dataSelecionada);
+    setDataSelecionada(moment(date).format("YYYY-MM-DD")); // Atualiza o estado com a data selecionada
   };
+
+  async function ConfirmAgendamento() {
+    await api
+      .post(`/Agendamento/CadastrarAgendamento`, {
+        idBarbeiro: idBarbeiro,
+        idCliente: tokenId,
+        dataAgendamento: `${dataSelecionada} ${horaMarcada}`,
+      })
+      .then((response) => {
+        console.log("Deu bom");
+        navigation.navigate("TelaListagemAgendamento");
+      })
+      .catch((error) => console.log(error));
+  }
+
+   function SelectDate(date) {
+     setDataSelecionada(null)
+
+    setTimeout(() => {setDataSelecionada(date.format("YYYY-MM-DD"))}, 1000)
+  }
 
   //validacao caso o cliente n escolher um profissional a pagina nao prossegue para agendar corte
   // const verificarSelecao = () => {
@@ -64,8 +86,15 @@ export const TelaAgendamento = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
+    ProfileLoad();
+    console.log("TOKEN AQUIIIIIIII");
+    console.log(tokenId);
+  }, []);
+
+  useEffect(() => {
     console.log(idBarbeiro);
   }, [idBarbeiro]);
+
 
   async function BuscarBarbeiros() {
     await api
@@ -87,20 +116,7 @@ export const TelaAgendamento = ({ navigation }) => {
     }
   }
 
-  async function CadastrarAgendamento() {
-    await api
-      .post(`/Agendamento/CadastrarAgendamento`, {
-        idBarbeiro: idBarbeiro,
-        idCliente: tokenId,
-        dataAgendamento: `${dataSelecionada}${HoraMarcada}`,
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+
 
   const [listaHorarios, setListaHorarios] = useState([
     { id: "1,", horario: "09:00" },
@@ -125,7 +141,6 @@ export const TelaAgendamento = ({ navigation }) => {
     { id: "20", horario: "21:40" },
   ]);
 
-  const [HoraMarcada, setHoraMarcada] = useState();
 
   //define padrão pt-br para calendário
   moment.updateLocale("pt-br", {
@@ -172,6 +187,10 @@ export const TelaAgendamento = ({ navigation }) => {
     ProfileLoad();
   }, []);
 
+  useEffect(() => {
+    console.log(dataSelecionada, horaMarcada)
+  }, [dataSelecionada, horaMarcada]);
+
   return (
     <Container>
       <StyledCalendarStrip
@@ -201,7 +220,11 @@ export const TelaAgendamento = ({ navigation }) => {
         iconContainer={{ flex: 0.1 }}
         //scroll da barra
         scrollable={true}
-        onDateSelected={handleDayClick}
+        onDateSelected={(date) => {
+          // SelectDate(date)
+          setDataSelecionada(date.format("YYYY-MM-DD"))
+          // console.log(dataSelecionada);
+        }}
       />
 
       <Line_Agendamento />
@@ -214,11 +237,7 @@ export const TelaAgendamento = ({ navigation }) => {
           horizontal={true}
           renderItem={({ item }) => (
             <ViewFlatAgendamento
-              onPress={() => {
-                barbeiroSelecionado(
-                  item.id
-                ); /*, verificarSelecao() }} disabled={!barbeiroClicado*/
-              }}
+              onPress={() => setIdBarbeiro(item.idBarbeiro)}
               isSelected={item.id === idBarbeiro && barbeiroClicado}
             >
               <ImgBarbeiro source={{ uri: item.idBarbeiroNavigation.foto }} />
@@ -244,10 +263,12 @@ export const TelaAgendamento = ({ navigation }) => {
           data={listaHorarios}
           renderItem={({ item }) => (
             <HoraButton
-              clicker={item.horario === HoraMarcada}
+              clicker={item.horario === horaMarcada}
               title={item.horario}
               onPress={() => {
-                setHoraMarcada(item.horario);
+                setHoraMarcada(`${item.horario}`);
+                // console.log(item.horario);
+                // console.log(horaMarcada);
               }}
             />
           )}
@@ -255,7 +276,7 @@ export const TelaAgendamento = ({ navigation }) => {
         />
       </CardsConatiner>
 
-      <ButtonLogin onPress={() => CadastrarAgendamento()}>
+      <ButtonLogin onPress={() => ConfirmAgendamento()}>
         <TextButton>Confirmar</TextButton>
       </ButtonLogin>
 
