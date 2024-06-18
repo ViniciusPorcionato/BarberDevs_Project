@@ -10,6 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import SwiperComponent from "../../components/Carrosel/Carrosel"
 import api from "../../Service/Service";
 import { userDecodeToken } from "../../Utils/Auth";
+import { ActivityIndicator } from "react-native"
 
 export const TelaHome = ({ navigation, route }) => {
   const [visible, setVisible] = useState(false)
